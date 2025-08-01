@@ -1,33 +1,37 @@
-interface axi_if (input bit clk);
+interface axi_if #(
+    parameter int DATA_WIDTH  = 32,
+    parameter int ADDR_WIDTH  = 16
+    ) (input bit clk);
+
     logic ACLK;
     logic ARESTN;
 
-    logic [15:0] AWADDR;
+    logic [ADDR_WIDTH-1:0] AWADDR;
     logic [7:0]  AWLEN;
     logic [2:0]  AWSIZE;
-    logic        AWVALID;
-    logic        AWREADY;
+    logic       AWVALID;
+    logic       AWREADY;
 
-    logic [31:0] WDATA;
-    logic        WLAST;
-    logic        WVALID;
-    logic        WREADY;
+    logic [DATA_WIDTH-1:0] WDATA;
+    logic       WLAST;
+    logic       WVALID;
+    logic       WREADY;
 
     logic [1:0]  BRESP;
-    logic        BVAILD;
-    logic        BREADY;
+    logic       BVAILD;
+    logic       BREADY;
 
-    logic [31:0] ARADDR;
+    logic [ADDR_WIDTH-1:0] ARADDR;
     logic [7:0]  ARLEN;
     logic [2:0]  ARSIZE;
-    logic        ARVALID;
-    logic        ARREADY;
+    logic       ARVALID;
+    logic       ARREADY;
 
-    logic [31:0] RDATA;
+    logic [DATA_WIDTH-1:0] RDATA;
     logic [1:0]  RRESP;
-    logic        RLAST;
-    logic        RVAILD;
-    logic        RREADY;
+    logic       RLAST;
+    logic       RVAILD;
+    logic       RREADY;
 
 
     clocking cb @(posedge clk);
