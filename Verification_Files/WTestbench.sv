@@ -50,11 +50,11 @@ module axi_write_tb(axi_if axi);
         actual_tx.AWSIZE = wtxn.AWSIZE;
         actual_tx.WDATA = new[wtxn.WDATA.size()];
         
-        if (axi.AWVALID === 1'bx || axi.WVALID === 1'bx) begin
-            $display("Warning: Unknown states detected, asserting reset");
-            assert_reset();
-            return;
-        end
+        // if (axi.AWVALID === 1'bx || axi.WVALID === 1'bx) begin
+        //     $display("Warning: Unknown states detected, asserting reset");
+        //     assert_reset();
+        //     return;
+        // end
 
         $display("Starting write transaction...");
         
