@@ -1,0 +1,3 @@
+class Rtransaction;
+
+endclass
