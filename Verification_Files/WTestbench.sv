@@ -43,10 +43,13 @@ module axi_write_tb(axi_if axi);
         tx.display();
     endtask
 
-    task automatic drive_stim(input WTransaction wtxn, ref logic [DATA_WIDTH-1:0] wdata_captured[]);
-        wdata_captured = new[wtxn.WDATA.size()];
+    task automatic drive_stim(input WTransaction wtxn, ref WTransaction actual_tx);
+        actual_tx = new();
+        actual_tx.AWADDR = wtxn.AWADDR;
+        actual_tx.AWLEN = wtxn.AWLEN;
+        actual_tx.AWSIZE = wtxn.AWSIZE;
+        actual_tx.WDATA = new[wtxn.WDATA.size()];
         
-        // Check for unknown states and reset if needed
         if (axi.AWVALID === 1'bx || axi.WVALID === 1'bx) begin
             $display("Warning: Unknown states detected, asserting reset");
             assert_reset();
@@ -74,7 +77,7 @@ module axi_write_tb(axi_if axi);
             
             do @(posedge axi.clk); while (!axi.WREADY);
             axi.WVALID <= 0;
-            wdata_captured[i] = axi.WDATA;
+            actual_tx.WDATA[i] = wtxn.WDATA[i]; // Capture the driven data
             @(posedge axi.clk);
         end
 
@@ -87,15 +90,8 @@ module axi_write_tb(axi_if axi);
         $display("Write transaction completed successfully");
     endtask
 
-    task automatic collect_output(input logic [DATA_WIDTH-1:0] wdata_captured[]);
-        WTransaction actual = new();
-        actual.AWADDR = axi.AWADDR;
-        actual.AWLEN  = axi.AWLEN;
-        actual.AWSIZE = axi.AWSIZE;
-        actual.WDATA  = new[wdata_captured.size()];
-        foreach (wdata_captured[i])
-            actual.WDATA[i] = wdata_captured[i];
-        actual_queue.push_back(actual);
+    task automatic collect_output(input WTransaction actual_tx);
+        actual_queue.push_back(actual_tx);
     endtask
 
     task automatic check_results();
@@ -137,7 +133,7 @@ module axi_write_tb(axi_if axi);
     endtask
 
     initial begin
-        logic [DATA_WIDTH-1:0] wdata_captured[];
+        WTransaction actual_tx;
         
         $display("Starting AXI Write Testbench...");
         assert_reset();
@@ -145,9 +141,9 @@ module axi_write_tb(axi_if axi);
         repeat(3) begin  // Reduced for easier debugging
             $display("\n--- Starting Test %0d ---", total_tests + 1);
             generate_stimulus();
-            drive_stim(tx, wdata_captured);        
+            drive_stim(tx, actual_tx);        
             golden_model(tx);           
-            collect_output(wdata_captured);        
+            collect_output(actual_tx);        
             check_results();
             repeat(3) @(posedge axi.clk);
         end

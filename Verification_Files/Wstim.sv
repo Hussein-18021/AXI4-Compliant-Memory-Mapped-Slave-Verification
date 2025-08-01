@@ -46,8 +46,8 @@ class WTransaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 1
     function void display();
         $display("AWADDR = 0x%0h | AWLEN = %0d | AWSIZE = %0d | Beats = %0d",
                 AWADDR, AWLEN, AWSIZE, AWLEN+1);
-        foreach (WDATA[i])
-            $display("WDATA[%0d] = 0x%08h", i, WDATA[i]);
+        // foreach (WDATA[i])
+        //     $display("WDATA[%0d] = 0x%08h", i, WDATA[i]);
     endfunction
 
 endclass
