@@ -1,43 +1,62 @@
 interface axi_if (input bit clk);
     logic ACLK;
     logic ARESTN;
-    logic AWADDR[15:0];
-    logic AWLEN[7:0];
-    logic AWSIZE[2:0];
-    logic AWVALID;
-    logic AWREADY;
-    logic WDATA[31:0];
-    logic WLAST;
-    logic WVALID;
-    logic WREADY;
-    logic BRESP[1:0];
-    logic BVAILD;
-    logic BREADY;
-    logic ARADDR[31:0];
-    logic ARLEN[7:0];
-    logic ARSIZE[2:0];
-    logic ARVALID;
-    logic ARREADY;
-    logic RDATA[31:0];
-    logic RRESP[1:0];
-    logic RLAST;
-    logic RVAILD;
-    logic RREADY;
+
+    logic [15:0] AWADDR;
+    logic [7:0]  AWLEN;
+    logic [2:0]  AWSIZE;
+    logic        AWVALID;
+    logic        AWREADY;
+
+    logic [31:0] WDATA;
+    logic        WLAST;
+    logic        WVALID;
+    logic        WREADY;
+
+    logic [1:0]  BRESP;
+    logic        BVAILD;
+    logic        BREADY;
+
+    logic [31:0] ARADDR;
+    logic [7:0]  ARLEN;
+    logic [2:0]  ARSIZE;
+    logic        ARVALID;
+    logic        ARREADY;
+
+    logic [31:0] RDATA;
+    logic [1:0]  RRESP;
+    logic        RLAST;
+    logic        RVAILD;
+    logic        RREADY;
+
+
+    clocking cb @(posedge clk);
+        default input #1step output negedge;
+        // Write channel
+        output AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY;
+        input  AWREADY, WREADY, BRESP, BVAILD;
+
+        // Read channel
+        output ARADDR, ARLEN, ARSIZE, ARVALID, RREADY;
+        input  ARREADY, RDATA, RRESP, RLAST, RVAILD;
+    endclocking
+
 
     modport DUT (
-    input ACLK, ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY,
-    output AWREADY, WREADY, BRESP, BVAILD, ARREADY, RDATA, RRESP, RLAST, RVAILD
+        input  ACLK, ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY,
+               ARADDR, ARLEN, ARSIZE, ARVALID, RREADY,
+        output AWREADY, WREADY, BRESP, BVAILD, ARREADY, RDATA, RRESP, RLAST, RVAILD
     );
 
+    // Write testbench modport
     modport WTEST (
-    input ACLK, AWREADY, WREADY, BRESP, BVAILD,
-    output ARESTN,AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY
+        input  ACLK, AWREADY, WREADY, BRESP, BVAILD,
+        output ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY
     );
 
+    // Read testbench modport
     modport RTEST (
-    input ACLK, ARREADY, RDATA, RRESP, RLAST, RVAILD,
-    output ARESTN, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
+        input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVAILD,
+        output ARESTN, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
     );
-
-
 endinterface
