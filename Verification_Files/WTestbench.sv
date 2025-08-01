@@ -41,37 +41,34 @@ module axi_write_tb(axi_if axi);
 
     task automatic drive_stim(input WTransaction wtxn, ref logic [axi.DATA_WIDTH-1:0] wdata_captured[]);
         wdata_captured = new[wtxn.WDATA.size()];
-        if (axi.cb.AWVALID === 1'bx || axi.cb.WVALID === 1'bx) begin
+        if (axi.AWVALID === 1'bx || axi.WVALID === 1'bx) begin
             assert_reset();
             return;
         end
 
-        if (wtxn.crosses_4KB_boundary())
-            $warning("Write burst crosses 4KB boundary: addr=%h len=%0d", wtxn.AWADDR, wtxn.AWLEN);
+        axi.AWADDR  <= wtxn.AWADDR;
+        axi.AWLEN   <= wtxn.AWLEN;
+        axi.AWSIZE  <= wtxn.AWSIZE;
+        axi.AWVALID <= 1;
 
-        axi.cb.AWADDR  <= wtxn.AWADDR;
-        axi.cb.AWLEN   <= wtxn.AWLEN;
-        axi.cb.AWSIZE  <= wtxn.AWSIZE;
-        axi.cb.AWVALID <= 1;
-
-        do @(axi.cb); while (!axi.cb.AWREADY);
-        axi.cb.AWVALID <= 0;
+        do @(axi.cb); while (!axi.AWREADY);
+        axi.AWVALID <= 0;
 
         foreach (wtxn.WDATA[i]) begin
-            axi.cb.WDATA  <= wtxn.WDATA[i];
-            axi.cb.WLAST  <= (i == wtxn.WDATA.size() - 1);
-            axi.cb.WVALID <= 1;
-            $display("[WRITE BEAT] i=%0d, data=%h, WLAST=%b", i, wtxn.WDATA[i], axi.cb.WLAST); 
-            do @(axi.cb); while (!axi.cb.WREADY);
-            axi.cb.WVALID <= 0;
-            wdata_captured[i] = axi.cb.WDATA;
+            axi.WDATA  <= wtxn.WDATA[i];
+            axi.WLAST  <= (i == wtxn.WDATA.size() - 1);
+            axi.WVALID <= 1;
+            $display("[WRITE BEAT] i=%0d, data=%h, WLAST=%b", i, wtxn.WDATA[i], axi.WLAST); 
+            do @(axi.cb); while (!axi.WREADY);
+            axi.WVALID <= 0;
+            wdata_captured[i] = axi.WDATA;
             @axi.cb;
         end
 
-        axi.cb.BREADY <= 1;
-        wait (axi.cb.BVAILD == 1);
-        $display("BRESP: %0b", axi.cb.BRESP);
-        axi.cb.BREADY <= 0;
+        axi.BREADY <= 1;
+        wait (axi.BVAILD == 1);
+        $display("BRESP: %0b", axi.BRESP);
+        axi.BREADY <= 0;
         @axi.cb;
     endtask
 
@@ -107,7 +104,6 @@ module axi_write_tb(axi_if axi);
 
     initial begin
         logic [axi.DATA_WIDTH-1:0] wdata_captured[];
-        
         repeat(10) begin
             generate_stimulus();
             drive_stim(tx, wdata_captured);        
@@ -115,6 +111,7 @@ module axi_write_tb(axi_if axi);
             collect_output(wdata_captured);        
             check_results();
         end
+        $finish;
     end
 
 endmodule
