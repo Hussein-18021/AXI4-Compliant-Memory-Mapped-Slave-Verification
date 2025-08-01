@@ -1,3 +1,4 @@
+// import enuming::*;
 class WTransaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 16);
 
     localparam int MEMORY_DEPTH = 1024;
@@ -8,8 +9,8 @@ class WTransaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 1
 
     rand logic [DATA_WIDTH-1:0] WDATA[];
 
-    rand handshake_t aw_handshake_type;
-    rand handshake_t w_handshake_type;
+    // rand handshake_t aw_handshake_type;
+    // rand handshake_t w_handshake_type;
 
     function new();
         AWSIZE = 3'b010;
@@ -38,20 +39,20 @@ class WTransaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 1
         ((AWADDR >> 2) + (AWLEN + 1)) < MEMORY_DEPTH;
     }
 
-    constraint aw_valid_before_ready {
-        aw_handshake_type == VALID_BEFORE_READY;
-    }
+    // constraint aw_valid_before_ready {
+    //     aw_handshake_type == VALID_BEFORE_READY;
+    // }
 
-    constraint w_ready_before_valid {
-        w_handshake_type == READY_BEFORE_VALID;
-    }
+    // constraint w_ready_before_valid {
+    //     w_handshake_type == READY_BEFORE_VALID;
+    // }
 
     function void display();
         $display("AWADDR = 0x%0h | AWLEN = %0d | AWSIZE = %0d | Beats = %0d",
                 AWADDR, AWLEN, AWSIZE, AWLEN+1);
-        $display("Handshake AW: %s | W: %s",
-                (aw_handshake_type == VALID_BEFORE_READY) ? "VALID→READY" : "READY→VALID",
-                (w_handshake_type == VALID_BEFORE_READY) ? "VALID→READY" : "READY→VALID");
+        // $display("Handshake AW: %s | W: %s",
+        //         (aw_handshake_type == VALID_BEFORE_READY) ? "VALID→READY" : "READY→VALID",
+        //         (w_handshake_type == VALID_BEFORE_READY) ? "VALID→READY" : "READY→VALID");
         foreach (WDATA[i])
             $display("WDATA[%0d] = 0x%08h", i, WDATA[i]);
     endfunction
