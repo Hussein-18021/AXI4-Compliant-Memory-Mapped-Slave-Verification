@@ -14,6 +14,25 @@ module axi_write_tb(axi_if axi);
     WTransaction expected_queue[$];
     WTransaction actual_queue[$];
 
+    // Using AXI4 Response Types from pkg.sv
+    // (assuming you'll add axi_resp_t enum to pkg.sv)
+
+    // Function to decode AXI response
+    function string decode_response(logic [1:0] resp);
+        case (resp)
+            enuming::OKAY:   return "OKAY";
+            enuming::EXOKAY: return "EXOKAY";
+            enuming::SLVERR: return "SLVERR";
+            enuming::DECERR: return "DECERR";
+            default: return "UNKNOWN";
+        endcase
+    endfunction
+
+    // Function to check if response is error
+    function bit is_error_response(logic [1:0] resp);
+        return (resp == enuming::SLVERR || resp == enuming::DECERR);
+    endfunction
+
     task automatic assert_reset();
         $display("Asserting reset via task...");
         axi.ARESTN = 0;
@@ -44,17 +63,14 @@ module axi_write_tb(axi_if axi);
     endtask
 
     task automatic drive_stim(input WTransaction wtxn, ref WTransaction actual_tx);
+        logic [1:0] bresp_captured;
+        
+        // Create actual transaction to capture the driven values
         actual_tx = new();
         actual_tx.AWADDR = wtxn.AWADDR;
         actual_tx.AWLEN = wtxn.AWLEN;
         actual_tx.AWSIZE = wtxn.AWSIZE;
         actual_tx.WDATA = new[wtxn.WDATA.size()];
-        
-        // if (axi.AWVALID === 1'bx || axi.WVALID === 1'bx) begin
-        //     $display("Warning: Unknown states detected, asserting reset");
-        //     assert_reset();
-        //     return;
-        // end
 
         $display("Starting write transaction...");
         
@@ -66,14 +82,17 @@ module axi_write_tb(axi_if axi);
 
         do @(posedge axi.clk); while (!axi.AWREADY);
         axi.AWVALID <= 0;
-        $display("Address phase completed: AWADDR=0x%h", wtxn.AWADDR);
+        $display("Address phase completed: AWADDR=0x%h, AWLEN=%0d, AWSIZE=%0d", 
+                 wtxn.AWADDR, wtxn.AWLEN, wtxn.AWSIZE);
 
         // Write Data Phase
+        $display("Starting data phase with %0d beats...", wtxn.WDATA.size());
         foreach (wtxn.WDATA[i]) begin
             axi.WDATA  <= wtxn.WDATA[i];
             axi.WLAST  <= (i == wtxn.WDATA.size() - 1);
             axi.WVALID <= 1;
-            $display("[WRITE BEAT] i=%0d, data=0x%h, WLAST=%b", i, wtxn.WDATA[i], axi.WLAST); 
+            $display("[WRITE BEAT %0d/%0d] data=0x%h, WLAST=%b", 
+                     i+1, wtxn.WDATA.size(), wtxn.WDATA[i], axi.WLAST); 
             
             do @(posedge axi.clk); while (!axi.WREADY);
             axi.WVALID <= 0;
@@ -81,13 +100,21 @@ module axi_write_tb(axi_if axi);
             @(posedge axi.clk);
         end
 
-        // Write Response Phase
+        $display("Waiting for write response...");
         axi.BREADY <= 1;
         do @(posedge axi.clk); while (!axi.BVALID);
-        $display("BRESP: %0b", axi.BRESP);
+        
+        bresp_captured = axi.BRESP;
+        $display("BRESP: %s (0b%b)", decode_response(bresp_captured), bresp_captured);
+        
+        if (is_error_response(bresp_captured)) begin
+            $display("WARNING: Transaction completed with error response!");
+        end else begin
+            $display("Transaction completed successfully");
+        end
+        
         axi.BREADY <= 0;
         @(posedge axi.clk);
-        $display("Write transaction completed successfully");
     endtask
 
     task automatic collect_output(input WTransaction actual_tx);
@@ -103,8 +130,8 @@ module axi_write_tb(axi_if axi);
         
         $display("======================================================");
         $display("Test #%0d Result", total_tests);
-        $display("  Actual   : AWADDR=%h AWLEN=%0d AWSIZE=%0d", actual.AWADDR, actual.AWLEN, actual.AWSIZE);
-        $display("  Expected : AWADDR=%h AWLEN=%0d AWSIZE=%0d", expected.AWADDR, expected.AWLEN, expected.AWSIZE);
+        $display("  Actual   : AWADDR=0x%h AWLEN=%0d AWSIZE=%0d", actual.AWADDR, actual.AWLEN, actual.AWSIZE);
+        $display("  Expected : AWADDR=0x%h AWLEN=%0d AWSIZE=%0d", expected.AWADDR, expected.AWLEN, expected.AWSIZE);
 
         if (actual.AWADDR == expected.AWADDR && 
             actual.AWLEN == expected.AWLEN && 
@@ -115,6 +142,8 @@ module axi_write_tb(axi_if axi);
             foreach (actual.WDATA[i]) begin
                 if (actual.WDATA[i] != expected.WDATA[i]) begin
                     data_match = 0;
+                    $display("  Data mismatch at beat %0d: actual=0x%h, expected=0x%h", 
+                             i, actual.WDATA[i], expected.WDATA[i]);
                     break;
                 end
             end
@@ -130,15 +159,37 @@ module axi_write_tb(axi_if axi);
             failed_tests++;
             $display("  TEST FAIL - Control signal mismatch");
         end
+        $display("======================================================");
+    endtask
+
+    task automatic test_boundary_cases();
+        WTransaction boundary_tx;
+        WTransaction actual_tx;
+        
+        $display("\n--- Testing 4KB Boundary Case ---");
+        
+        // Create a transaction that should cross 4KB boundary
+        boundary_tx = new();
+        boundary_tx.AWADDR = 16'h0FF0;  // Close to 4KB boundary (4096 = 0x1000)
+        boundary_tx.AWLEN = 8'd7;       // 8 beats 
+        boundary_tx.AWSIZE = 3'b010;    // 4 bytes per beat
+        boundary_tx.post_randomize();   // Generate WDATA
+        
+        $display("Boundary test: AWADDR=0x%h, total_bytes=%0d, crosses_boundary=%b", 
+                 boundary_tx.AWADDR, (boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE,
+                 boundary_tx.crosses_4KB_boundary());
+        
+        drive_stim(boundary_tx, actual_tx);
     endtask
 
     initial begin
         WTransaction actual_tx;
         
         $display("Starting AXI Write Testbench...");
+        $display("=====================================");
         assert_reset();
         
-        repeat(3) begin  // Reduced for easier debugging
+        repeat(3) begin
             $display("\n--- Starting Test %0d ---", total_tests + 1);
             generate_stimulus();
             drive_stim(tx, actual_tx);        
@@ -148,11 +199,19 @@ module axi_write_tb(axi_if axi);
             repeat(3) @(posedge axi.clk);
         end
         
+        test_boundary_cases();
+        
         $display("\n======================================================");
-        $display("TEST SUMMARY:");
+        $display("FINAL TEST SUMMARY:");
+        $display("======================================================");
         $display("Total Tests: %0d", total_tests);
         $display("Passed: %0d", passed_tests);
         $display("Failed: %0d", failed_tests);
+        if (failed_tests == 0) begin
+            $display("ALL TESTS PASSED!");
+        end else begin
+            $display("%0d TESTS FAILED", failed_tests);
+        end
         $display("======================================================");
         $finish;
     end
