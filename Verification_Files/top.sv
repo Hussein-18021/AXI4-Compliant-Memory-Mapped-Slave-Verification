@@ -6,17 +6,18 @@ module top;
     parameter int MEMORY_DEPTH = 1024;
 
     bit clk;
-    logic rstn;
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
 
     axi_if #(DATA_WIDTH, ADDR_WIDTH) axi(clk);
 
-    axi4 #(
-        .DATA_WIDTH(DATA_WIDTH),
-        .ADDR_WIDTH(ADDR_WIDTH),
-        .MEMORY_DEPTH(MEMORY_DEPTH)
-    ) dut (
+    assign axi.ACLK = clk;
+
+    axi4 #( .DATA_WIDTH(DATA_WIDTH),.ADDR_WIDTH(ADDR_WIDTH), .MEMORY_DEPTH(MEMORY_DEPTH)) dut (
         .ACLK     (axi.ACLK),
-        .ARESETn  (axi.ARESTN),
+        .ARESETn  (axi.ARESTN), 
         .AWADDR   (axi.AWADDR),
         .AWLEN    (axi.AWLEN),
         .AWSIZE   (axi.AWSIZE),
@@ -27,7 +28,7 @@ module top;
         .WVALID   (axi.WVALID),
         .WREADY   (axi.WREADY),
         .BRESP    (axi.BRESP),
-        .BVALID   (axi.BVAILD),
+        .BVALID   (axi.BVALID),
         .BREADY   (axi.BREADY),
         .ARADDR   (axi.ARADDR),
         .ARLEN    (axi.ARLEN),
@@ -37,7 +38,7 @@ module top;
         .RDATA    (axi.RDATA),
         .RRESP    (axi.RRESP),
         .RLAST    (axi.RLAST),
-        .RVALID   (axi.RVAILD),
+        .RVALID   (axi.RVALID),
         .RREADY   (axi.RREADY)
     );
 

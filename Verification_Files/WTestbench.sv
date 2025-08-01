@@ -4,6 +4,8 @@ import enuming::*;
 
 module axi_write_tb(axi_if axi);
 
+    parameter int DATA_WIDTH = 32;
+    
     int total_tests = 0;
     int passed_tests = 0;
     int failed_tests = 0;
@@ -13,10 +15,12 @@ module axi_write_tb(axi_if axi);
     WTransaction actual_queue[$];
 
     task automatic assert_reset();
+        $display("Asserting reset via task...");
         axi.ARESTN = 0;
-        @(posedge axi.clk);
-        check_results();
+        repeat(3) @(posedge axi.clk);
         axi.ARESTN = 1;
+        repeat(2) @(posedge axi.clk);
+        $display("Reset task completed");
     endtask
 
     task automatic golden_model(input WTransaction tx);
@@ -39,40 +43,51 @@ module axi_write_tb(axi_if axi);
         tx.display();
     endtask
 
-    task automatic drive_stim(input WTransaction wtxn, ref logic [axi.DATA_WIDTH-1:0] wdata_captured[]);
+    task automatic drive_stim(input WTransaction wtxn, ref logic [DATA_WIDTH-1:0] wdata_captured[]);
         wdata_captured = new[wtxn.WDATA.size()];
+        
+        // Check for unknown states and reset if needed
         if (axi.AWVALID === 1'bx || axi.WVALID === 1'bx) begin
+            $display("Warning: Unknown states detected, asserting reset");
             assert_reset();
             return;
         end
 
+        $display("Starting write transaction...");
+        
+        // Write Address Phase
         axi.AWADDR  <= wtxn.AWADDR;
         axi.AWLEN   <= wtxn.AWLEN;
         axi.AWSIZE  <= wtxn.AWSIZE;
         axi.AWVALID <= 1;
 
-        do @(axi.cb); while (!axi.AWREADY);
+        do @(posedge axi.clk); while (!axi.AWREADY);
         axi.AWVALID <= 0;
+        $display("Address phase completed: AWADDR=0x%h", wtxn.AWADDR);
 
+        // Write Data Phase
         foreach (wtxn.WDATA[i]) begin
             axi.WDATA  <= wtxn.WDATA[i];
             axi.WLAST  <= (i == wtxn.WDATA.size() - 1);
             axi.WVALID <= 1;
-            $display("[WRITE BEAT] i=%0d, data=%h, WLAST=%b", i, wtxn.WDATA[i], axi.WLAST); 
-            do @(axi.cb); while (!axi.WREADY);
+            $display("[WRITE BEAT] i=%0d, data=0x%h, WLAST=%b", i, wtxn.WDATA[i], axi.WLAST); 
+            
+            do @(posedge axi.clk); while (!axi.WREADY);
             axi.WVALID <= 0;
             wdata_captured[i] = axi.WDATA;
-            @axi.cb;
+            @(posedge axi.clk);
         end
 
+        // Write Response Phase
         axi.BREADY <= 1;
-        wait (axi.BVAILD == 1);
+        do @(posedge axi.clk); while (!axi.BVALID);
         $display("BRESP: %0b", axi.BRESP);
         axi.BREADY <= 0;
-        @axi.cb;
+        @(posedge axi.clk);
+        $display("Write transaction completed successfully");
     endtask
 
-    task automatic collect_output(input logic [axi.DATA_WIDTH-1:0] wdata_captured[]);
+    task automatic collect_output(input logic [DATA_WIDTH-1:0] wdata_captured[]);
         WTransaction actual = new();
         actual.AWADDR = axi.AWADDR;
         actual.AWLEN  = axi.AWLEN;
@@ -86,31 +101,63 @@ module axi_write_tb(axi_if axi);
     task automatic check_results();
         int num_checks = (actual_queue.size() < expected_queue.size()) ? actual_queue.size() : expected_queue.size();
 
+        WTransaction actual   = actual_queue[num_checks-1];
+        WTransaction expected = expected_queue[num_checks-1];
         total_tests++;
+        
         $display("======================================================");
         $display("Test #%0d Result", total_tests);
-        $display("  Actual   : AWADDR=%h AWLEN=%0d AWSIZE=%0d WDATA=%p", actual_queue[num_checks-1].AWADDR, actual_queue[num_checks-1].AWLEN, actual_queue[num_checks-1].AWSIZE, actual_queue[num_checks-1].WDATA);
-        $display("  Expected : AWADDR=%h AWLEN=%0d AWSIZE=%0d WDATA=%p", expected_queue[num_checks-1].AWADDR, expected_queue[num_checks-1].AWLEN, expected_queue[num_checks-1].AWSIZE, expected_queue[num_checks-1].WDATA);
+        $display("  Actual   : AWADDR=%h AWLEN=%0d AWSIZE=%0d", actual.AWADDR, actual.AWLEN, actual.AWSIZE);
+        $display("  Expected : AWADDR=%h AWLEN=%0d AWSIZE=%0d", expected.AWADDR, expected.AWLEN, expected.AWSIZE);
 
-        if (actual_queue[num_checks-1] === expected_queue[num_checks-1]) begin
-            passed_tests++;
-            $display("  TEST PASS");
+        if (actual.AWADDR == expected.AWADDR && 
+            actual.AWLEN == expected.AWLEN && 
+            actual.AWSIZE == expected.AWSIZE &&
+            actual.WDATA.size() == expected.WDATA.size()) begin
+            
+            bit data_match = 1;
+            foreach (actual.WDATA[i]) begin
+                if (actual.WDATA[i] != expected.WDATA[i]) begin
+                    data_match = 0;
+                    break;
+                end
+            end
+            
+            if (data_match) begin
+                passed_tests++;
+                $display("  TEST PASS");
+            end else begin
+                failed_tests++;
+                $display("  TEST FAIL - Data mismatch");
+            end
         end else begin
             failed_tests++;
-            $display("  TEST FAIL");
-            $finish(1); // stop simulation on failure
+            $display("  TEST FAIL - Control signal mismatch");
         end
     endtask
 
     initial begin
-        logic [axi.DATA_WIDTH-1:0] wdata_captured[];
-        repeat(10) begin
+        logic [DATA_WIDTH-1:0] wdata_captured[];
+        
+        $display("Starting AXI Write Testbench...");
+        assert_reset();
+        
+        repeat(3) begin  // Reduced for easier debugging
+            $display("\n--- Starting Test %0d ---", total_tests + 1);
             generate_stimulus();
             drive_stim(tx, wdata_captured);        
             golden_model(tx);           
             collect_output(wdata_captured);        
             check_results();
+            repeat(3) @(posedge axi.clk);
         end
+        
+        $display("\n======================================================");
+        $display("TEST SUMMARY:");
+        $display("Total Tests: %0d", total_tests);
+        $display("Passed: %0d", passed_tests);
+        $display("Failed: %0d", failed_tests);
+        $display("======================================================");
         $finish;
     end
 
