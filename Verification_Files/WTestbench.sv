@@ -64,8 +64,6 @@ module axi_write_tb(axi_if axi);
 
     task automatic drive_stim(input WTransaction wtxn, ref WTransaction actual_tx);
         logic [1:0] bresp_captured;
-        
-        // Create actual transaction to capture the driven values
         actual_tx = new();
         actual_tx.AWADDR = wtxn.AWADDR;
         actual_tx.AWLEN = wtxn.AWLEN;
@@ -73,8 +71,7 @@ module axi_write_tb(axi_if axi);
         actual_tx.WDATA = new[wtxn.WDATA.size()];
 
         $display("Starting write transaction...");
-        
-        // Write Address Phase
+
         axi.AWADDR  <= wtxn.AWADDR;
         axi.AWLEN   <= wtxn.AWLEN;
         axi.AWSIZE  <= wtxn.AWSIZE;
@@ -85,18 +82,17 @@ module axi_write_tb(axi_if axi);
         $display("Address phase completed: AWADDR=0x%h, AWLEN=%0d, AWSIZE=%0d", 
                  wtxn.AWADDR, wtxn.AWLEN, wtxn.AWSIZE);
 
-        // Write Data Phase
         $display("Starting data phase with %0d beats...", wtxn.WDATA.size());
         foreach (wtxn.WDATA[i]) begin
             axi.WDATA  <= wtxn.WDATA[i];
             axi.WLAST  <= (i == wtxn.WDATA.size() - 1);
             axi.WVALID <= 1;
             $display("[WRITE BEAT %0d/%0d] data=0x%h, WLAST=%b", 
-                     i+1, wtxn.WDATA.size(), wtxn.WDATA[i], axi.WLAST); 
+                     i+1, wtxn.WDATA.size(), wtxn.WDATA[i], (i == wtxn.WDATA.size() - 1)); 
             
             do @(posedge axi.clk); while (!axi.WREADY);
             axi.WVALID <= 0;
-            actual_tx.WDATA[i] = wtxn.WDATA[i]; // Capture the driven data
+            actual_tx.WDATA[i] = wtxn.WDATA[i];
             @(posedge axi.clk);
         end
 
@@ -162,15 +158,35 @@ module axi_write_tb(axi_if axi);
         $display("======================================================");
     endtask
 
-    task automatic test_boundary_cases();
+    task automatic test_boundary_Error_cases();
         WTransaction boundary_tx;
         WTransaction actual_tx;
         
-        $display("\n--- Testing 4KB Boundary Case ---");
+        $display("\n--- Testing 4KB Boundary Crossing Case ---");
         
         // Create a transaction that should cross 4KB boundary
         boundary_tx = new();
         boundary_tx.AWADDR = 16'h0FF0;  // Close to 4KB boundary (4096 = 0x1000)
+        boundary_tx.AWLEN = 8'd7;       // 8 beats 
+        boundary_tx.AWSIZE = 3'b010;    // 4 bytes per beat
+        boundary_tx.post_randomize();   // Generate WDATA
+        
+        $display("Boundary test: AWADDR=0x%h, total_bytes=%0d, crosses_boundary=%b", 
+                 boundary_tx.AWADDR, (boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE,
+                 boundary_tx.crosses_4KB_boundary());
+        
+        drive_stim(boundary_tx, actual_tx);
+    endtask
+
+    task automatic test_boundary_pass_cases();
+        WTransaction boundary_tx;
+        WTransaction actual_tx;
+        
+        $display("\n--- Testing 4KB Boundary Passing Case ---");
+        
+        // Create a transaction that should not cross 4KB boundary
+        boundary_tx = new();
+        boundary_tx.AWADDR = 16'h0FE0;  // Close to 4KB boundary
         boundary_tx.AWLEN = 8'd7;       // 8 beats 
         boundary_tx.AWSIZE = 3'b010;    // 4 bytes per beat
         boundary_tx.post_randomize();   // Generate WDATA
@@ -189,6 +205,7 @@ module axi_write_tb(axi_if axi);
         $display("=====================================");
         assert_reset();
         
+        // Normal test cases
         repeat(3) begin
             $display("\n--- Starting Test %0d ---", total_tests + 1);
             generate_stimulus();
@@ -199,7 +216,9 @@ module axi_write_tb(axi_if axi);
             repeat(3) @(posedge axi.clk);
         end
         
-        test_boundary_cases();
+        // Test boundary case
+        test_boundary_Error_cases();
+        test_boundary_pass_cases();
         
         $display("\n======================================================");
         $display("FINAL TEST SUMMARY:");
