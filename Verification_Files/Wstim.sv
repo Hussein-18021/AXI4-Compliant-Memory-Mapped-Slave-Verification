@@ -32,9 +32,9 @@ class WTransaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 1
         ((AWADDR & 12'hFFF) + total_bytes()) <= 12'hFFF;
     }
 
-    constraint force_4kb_crossing_c {
-        ((AWADDR & 12'hFFF) + total_bytes()) > 12'hFFF;
-    }
+    // constraint force_4kb_crossing_c {
+    //     ((AWADDR & 12'hFFF) + total_bytes()) > 12'hFFF;
+    // }
 
     constraint memory_range_c {
         (AWADDR >> 2) < MEMORY_DEPTH;

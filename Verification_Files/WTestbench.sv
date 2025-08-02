@@ -122,11 +122,11 @@ module axi_write_tb(axi_if axi);
 
     task automatic collect_output(input WTransaction actual_tx);
         actual_queue.push_back(actual_tx);
-        $display("Collected output transaction:");
-        foreach (actual_tx.WDATA[i]) begin
-            $display("  Beat %0d: WDATA = 0x%h", i, actual_tx.WDATA[i]);
-        end
-    endtask
+        // $display("Collected output transaction:");
+        // foreach (actual_tx.WDATA[i]) begin
+        //     $display("  Beat %0d: WDATA = 0x%h", i, actual_tx.WDATA[i]);
+        // end
+    endtask 
 
     task automatic check_results();
         int num_checks = (actual_queue.size() < expected_queue.size()) ? actual_queue.size() : expected_queue.size();
@@ -188,7 +188,7 @@ module axi_write_tb(axi_if axi);
                 boundary_tx.AWADDR, 
                 boundary_tx.AWADDR + ((boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE) - 1,
                 (boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE);
-        $display("Does NOT cross 4095 boundary: %b", boundary_tx.crosses_4KB_boundary());
+        $display("Does cross 4095 boundary: %b", boundary_tx.crosses_4KB_boundary());
 
         drive_stim(boundary_tx, actual_tx);
 
@@ -224,7 +224,7 @@ module axi_write_tb(axi_if axi);
             collect_output(actual_tx);
             check_results();
     endtask
-    
+
     task automatic run_test();
         WTransaction actual_tx;
         generate_stimulus();
@@ -235,11 +235,13 @@ module axi_write_tb(axi_if axi);
         repeat(3) @(posedge axi.clk);
     endtask
 
+
     initial begin
         $display("Starting AXI Write Testbench...");
         $display("=====================================");
         assert_reset();
 
+        // Run random testcases
         repeat (3) run_test();
 
         // Run directed boundary cases
