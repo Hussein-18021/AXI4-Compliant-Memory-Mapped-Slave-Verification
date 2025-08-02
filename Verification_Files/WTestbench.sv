@@ -14,10 +14,17 @@ module axi_write_tb(axi_if axi);
     WTransaction expected_queue[$];
     WTransaction actual_queue[$];
 
-    // Using AXI4 Response Types from pkg.sv
-    // (assuming you'll add axi_resp_t enum to pkg.sv)
+    initial begin
+        axi.AWADDR = 0;
+        axi.AWLEN = 0;
+        axi.AWSIZE = 0;
+        axi.AWVALID = 0;
+        axi.WDATA = 0;
+        axi.WVALID = 0;
+        axi.WLAST = 0;
+        axi.BREADY = 0;
+    end
 
-    // Function to decode AXI response
     function string decode_response(logic [1:0] resp);
         case (resp)
             enuming::OKAY:   return "OKAY";
@@ -54,7 +61,7 @@ module axi_write_tb(axi_if axi);
     endtask
 
     task automatic generate_stimulus();
-        if (tx == null) tx = new();
+        tx = new();
         assert(tx.randomize()) else begin
             $display("ERROR: Randomization failed!");
             $stop;
@@ -115,6 +122,10 @@ module axi_write_tb(axi_if axi);
 
     task automatic collect_output(input WTransaction actual_tx);
         actual_queue.push_back(actual_tx);
+        $display("Collected output transaction:");
+        foreach (actual_tx.WDATA[i]) begin
+            $display("  Beat %0d: WDATA = 0x%h", i, actual_tx.WDATA[i]);
+        end
     endtask
 
     task automatic check_results();
@@ -161,65 +172,80 @@ module axi_write_tb(axi_if axi);
     task automatic test_boundary_Error_cases();
         WTransaction boundary_tx;
         WTransaction actual_tx;
-        
-        $display("\n--- Testing 4KB Boundary Crossing Case ---");
-        
-        // Create a transaction that should cross 4KB boundary
+
+        $display("\n--- Testing 4095 Boundary Crossing Case ---");
+
+        // Create a transaction that should cross 4095 boundary
         boundary_tx = new();
-        boundary_tx.AWADDR = 16'h0FF0;  // Close to 4KB boundary (4096 = 0x1000)
+        boundary_tx.AWADDR = 16'h0FE0;  // 4064
         boundary_tx.AWLEN = 8'd7;       // 8 beats 
-        boundary_tx.AWSIZE = 3'b010;    // 4 bytes per beat
+        boundary_tx.AWSIZE = 3'b010;    // 4 bytes per beat → 32 + 4064 = 4096 ( > 4095)
         boundary_tx.post_randomize();   // Generate WDATA
-        
-        $display("Boundary test: AWADDR=0x%h, total_bytes=%0d, crosses_boundary=%b", 
-                 boundary_tx.AWADDR, (boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE,
-                 boundary_tx.crosses_4KB_boundary());
-        
+
+        $display("Boundary edge test: AWADDR=0x%h, AWLEN=%0d, AWSIZE=0x%h", 
+                    boundary_tx.AWADDR, boundary_tx.AWLEN, boundary_tx.AWSIZE);
+        $display("Address range: 0x%h to 0x%h, total_bytes=%0d", 
+                boundary_tx.AWADDR, 
+                boundary_tx.AWADDR + ((boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE) - 1,
+                (boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE);
+        $display("Does NOT cross 4095 boundary: %b", boundary_tx.crosses_4KB_boundary());
+
         drive_stim(boundary_tx, actual_tx);
+
+        golden_model(boundary_tx);
+        collect_output(actual_tx);
+        check_results();
     endtask
 
     task automatic test_boundary_pass_cases();
         WTransaction boundary_tx;
         WTransaction actual_tx;
-        
-        $display("\n--- Testing 4KB Boundary Passing Case ---");
-        
-        // Create a transaction that should not cross 4KB boundary
-        boundary_tx = new();
-        boundary_tx.AWADDR = 16'h0FE0;  // Close to 4KB boundary
-        boundary_tx.AWLEN = 8'd7;       // 8 beats 
-        boundary_tx.AWSIZE = 3'b010;    // 4 bytes per beat
-        boundary_tx.post_randomize();   // Generate WDATA
-        
-        $display("Boundary test: AWADDR=0x%h, total_bytes=%0d, crosses_boundary=%b", 
-                 boundary_tx.AWADDR, (boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE,
-                 boundary_tx.crosses_4KB_boundary());
-        
-        drive_stim(boundary_tx, actual_tx);
+
+        $display("\n--- Testing 4095 Boundary Edge Case ---");
+
+            // Create a transaction that ends exactly at boundary 4095 (0x0FFF) without crossing
+            boundary_tx = new();
+            boundary_tx.AWADDR = 16'h0FFB;  // 4088 = 0x0FF8
+            boundary_tx.AWLEN = 8'd0;       // 1 beat (AWLEN=0 means 1 transfer) 
+            boundary_tx.AWSIZE = 3'b010;    // 4 bytes per beat → 4 bytes total (4088 + 4 = 4092) (Strict edge case)
+            boundary_tx.post_randomize();   // Generate WDATA
+
+            $display("Boundary edge test: AWADDR=0x%h, AWLEN=%0d, AWSIZE=0x%h", 
+                    boundary_tx.AWADDR, boundary_tx.AWLEN, boundary_tx.AWSIZE);
+            $display("Address range: 0x%h to 0x%h, total_bytes=%0d", 
+                    boundary_tx.AWADDR, 
+                    boundary_tx.AWADDR + ((boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE) - 1,
+                    (boundary_tx.AWLEN + 1) << boundary_tx.AWSIZE);
+            $display("Does NOT cross 4095 boundary: %b", boundary_tx.crosses_4KB_boundary());
+
+            drive_stim(boundary_tx, actual_tx);
+
+            golden_model(boundary_tx);
+            collect_output(actual_tx);
+            check_results();
+    endtask
+    
+    task automatic run_test();
+        WTransaction actual_tx;
+        generate_stimulus();
+        drive_stim(tx, actual_tx);
+        golden_model(tx);
+        collect_output(actual_tx);
+        check_results();
+        repeat(3) @(posedge axi.clk);
     endtask
 
     initial begin
-        WTransaction actual_tx;
-        
         $display("Starting AXI Write Testbench...");
         $display("=====================================");
         assert_reset();
-        
-        // Normal test cases
-        repeat(3) begin
-            $display("\n--- Starting Test %0d ---", total_tests + 1);
-            generate_stimulus();
-            drive_stim(tx, actual_tx);        
-            golden_model(tx);           
-            collect_output(actual_tx);        
-            check_results();
-            repeat(3) @(posedge axi.clk);
-        end
-        
-        // Test boundary case
+
+        repeat (3) run_test();
+
+        // Run directed boundary cases
         test_boundary_Error_cases();
         test_boundary_pass_cases();
-        
+
         $display("\n======================================================");
         $display("FINAL TEST SUMMARY:");
         $display("======================================================");
@@ -233,6 +259,11 @@ module axi_write_tb(axi_if axi);
         end
         $display("======================================================");
         $finish;
+    end
+    
+    initial begin
+        $dumpfile("axi_write_tb.vcd"); // to visualize the waveform from VSCode directly
+        $dumpvars(0, axi_write_tb);
     end
 
 endmodule

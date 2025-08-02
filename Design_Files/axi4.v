@@ -61,8 +61,8 @@ module axi4 #(
     assign  read_addr_incr  = (1 << read_size);
     
     // Address boundary check (4KB boundary = 12 bits)
-    assign write_boundary_cross = ((write_addr & 12'hFFF) + (write_burst_len << write_size)) > 12'hFFF;
-    assign read_boundary_cross = ((read_addr & 12'hFFF) + (read_burst_len << read_size)) > 12'hFFF;
+    assign write_boundary_cross = ((write_addr & 12'hFFF) + (write_burst_len + 1 << write_size)) > 12'hFFF; // Was a bug write_burst_len --> write_burst_len+1
+    assign read_boundary_cross = ((read_addr & 12'hFFF) + (read_burst_len + 1 << read_size)) > 12'hFFF; // Was a bug write_burst_len --> write_burst_len+1
     
     // Address range check
     assign write_addr_valid = (write_addr >> 2) < MEMORY_DEPTH;

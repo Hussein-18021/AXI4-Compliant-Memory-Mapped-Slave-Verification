@@ -25,7 +25,7 @@ module axi4_memory #(
             mem_rdata <= 0;
         else if (mem_en) begin
             if (mem_we)
-                memory[mem_addr] <= mem_wdata;
+                memory[mem_addr] <= mem_wdata;  // Was a bug memory[mem_addr-1] <= mem_wdata; --> memory[mem_addr] <= mem_wdata;
              else 
                mem_rdata <= memory[mem_addr] ;
         end
