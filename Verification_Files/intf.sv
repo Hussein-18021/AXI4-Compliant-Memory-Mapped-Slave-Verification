@@ -52,15 +52,15 @@ interface axi_if #(
         output AWREADY, WREADY, BRESP, BVALID, ARREADY, RDATA, RRESP, RLAST, RVALID 
     );
 
-    // Write testbench modport
+
     modport WTEST (
         input  ACLK, AWREADY, WREADY, BRESP, BVALID,  
         output ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY
     );
 
-    // Read testbench modport
+
     modport RTEST (
-        input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  // Fixed: was RVAILD
+        input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  
         output ARESTN, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
     );
 endinterface
