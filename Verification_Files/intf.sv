@@ -18,7 +18,7 @@ interface axi_if #(
     logic       WREADY;
 
     logic [1:0]  BRESP;
-    logic       BVALID;  
+    logic       BVAILD;
     logic       BREADY;
 
     logic [ADDR_WIDTH-1:0] ARADDR;
@@ -30,7 +30,7 @@ interface axi_if #(
     logic [DATA_WIDTH-1:0] RDATA;
     logic [1:0]  RRESP;
     logic       RLAST;
-    logic       RVALID;  
+    logic       RVAILD;
     logic       RREADY;
 
 
@@ -38,29 +38,31 @@ interface axi_if #(
         default input #1step output negedge;
         // Write channel
         output AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY;
-        input  AWREADY, WREADY, BRESP, BVALID;  
+        input  AWREADY, WREADY, BRESP, BVAILD;
 
         // Read channel
         output ARADDR, ARLEN, ARSIZE, ARVALID, RREADY;
-        input  ARREADY, RDATA, RRESP, RLAST, RVALID;  
+        input  ARREADY, RDATA, RRESP, RLAST, RVAILD;
     endclocking
 
 
     modport DUT (
         input  ACLK, ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY,
                ARADDR, ARLEN, ARSIZE, ARVALID, RREADY,
-        output AWREADY, WREADY, BRESP, BVALID, ARREADY, RDATA, RRESP, RLAST, RVALID 
+        output AWREADY, WREADY, BRESP, BVAILD, ARREADY, RDATA, RRESP, RLAST, RVAILD
     );
 
     // Write testbench modport
     modport WTEST (
-        input  ACLK, AWREADY, WREADY, BRESP, BVALID,  
+        clocking cb,
+        input  ACLK, AWREADY, WREADY, BRESP, BVAILD,
         output ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY
     );
 
     // Read testbench modport
     modport RTEST (
-        input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  
+        input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  // Fixed: was RVAILD
         output ARESTN, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
     );
+    
 endinterface
