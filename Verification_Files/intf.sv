@@ -54,14 +54,13 @@ interface axi_if #(
 
     // Write testbench modport
     modport WTEST (
-        clocking cb,
         input  ACLK, AWREADY, WREADY, BRESP, BVAILD,
         output ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY
     );
 
     // Read testbench modport
     modport RTEST (
-        input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  // Fixed: was RVAILD
+        input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  
         output ARESTN, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
     );
     
