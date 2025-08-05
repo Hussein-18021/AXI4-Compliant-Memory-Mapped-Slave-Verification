@@ -25,5 +25,35 @@ package enuming;
         SIZE_64B  = 3'b110,
         SIZE_128B = 3'b111 
     } axi_size_t;
+
+    typedef enum {
+        SINGLE_BEAT,
+        SHORT_BURST,
+        MEDIUM_BURST,
+        LONG_BURST,
+        VERY_LONG_BURST
+    } burst_type_e;
+
+    typedef enum {
+        LOW_ADDR_RANGE,
+        MID_ADDR_RANGE, 
+        HIGH_ADDR_RANGE,
+        BOUNDARY_ADDR_RANGE
+    } addr_range_e;
+
+    typedef enum {
+        RANDOM_DATA,
+        ALL_ZEROS,
+        ALL_ONES,
+        ALTERNATING_AA,
+        ALTERNATING_55
+    } data_pattern_e;
+
+    typedef enum {
+        RANDOM_MODE,
+        BOUNDARY_CROSSING_MODE,
+        BURST_LENGTH_MODE,
+        DATA_PATTERN_MODE
+    } test_mode_e;
     
 endpackage
