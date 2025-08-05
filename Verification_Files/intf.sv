@@ -60,6 +60,7 @@ interface axi_if #(
 
     // Read testbench modport
     modport RTEST (
+        clocking cb;
         input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  
         output ARESTN, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
     );
