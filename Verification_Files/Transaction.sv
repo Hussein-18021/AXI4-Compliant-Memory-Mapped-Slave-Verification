@@ -170,25 +170,7 @@ class Transaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 16
         foreach (wvalid_delay[i]) {
             wvalid_delay[i] inside {[0:2]}; // 0-2 cycle delay per WVALID
         }
-        
-        wvalid_pattern.size() == (LEN + 1);
-        
-        // AXI4 Protocol Compliance - matching Wstim.sv logic:
-        // 1. If AWVALID=0: No address phase, so no data phase
-        // 2. If AWVALID=1: Address phase proceeds, data phase MUST complete all beats
-        solve awvalid_value before wvalid_pattern;
-        if (awvalid_value == 1) {
-            // Address phase accepted -> ALL data beats must be transferred
-            foreach (wvalid_pattern[i]) {
-                wvalid_pattern[i] == 1;
-            }
-        } else {
-            // No address phase -> No data beats should be sent
-            foreach (wvalid_pattern[i]) {
-                wvalid_pattern[i] == 0;
-            }
-        }
-        
+             
         // Read operation control constraints
         arvalid_delay inside {[0:4]};
         arvalid_duration inside {[1:3]};
@@ -204,24 +186,34 @@ class Transaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 16
     function void post_randomize();
         int burst_len = LEN + 1;
         
-        // Resize and randomize control signal arrays based on burst length
+        // Resize control signal arrays based on burst length
         wvalid_delay = new[burst_len];
         wvalid_pattern = new[burst_len];
         rready_delay = new[burst_len];
         rready_random_deassert = new[burst_len];
         
-        // Randomize array elements since constraints couldn't be applied before sizing
+        // Randomize delay elements
         foreach (wvalid_delay[i]) begin
             wvalid_delay[i] = $urandom_range(0, 2);
         end
-        foreach (wvalid_pattern[i]) begin
-            wvalid_pattern[i] = ($urandom_range(1, 100) <= 90) ? 1 : 0; // 90% chance of 1
+        
+        if (awvalid_value == 1) begin
+            // Address phase accepted -> ALL data beats must be transferred (WVALID=1)
+            foreach (wvalid_pattern[i]) begin
+                wvalid_pattern[i] = 1'b1;
+            end
+        end else begin
+            // No address phase -> No data beats should be sent (WVALID=0)  
+            foreach (wvalid_pattern[i]) begin
+                wvalid_pattern[i] = 1'b0;
+            end
         end
+        
         foreach (rready_delay[i]) begin
             rready_delay[i] = $urandom_range(0, 2);
         end
         foreach (rready_random_deassert[i]) begin
-            rready_random_deassert[i] = ($urandom_range(1, 100) <= 85) ? 1 : 0; // 85% chance of 1
+            rready_random_deassert[i] = ($urandom_range(1, 100) <= 85) ? 1 : 0;
         end
         
         // For write operations, create data array
