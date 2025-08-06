@@ -52,17 +52,23 @@ interface axi_if #(
         output AWREADY, WREADY, BRESP, BVALID, ARREADY, RDATA, RRESP, RLAST, RVALID
     );
 
-    // Write testbench modport
-    modport WTEST (
-        input  ACLK, AWREADY, WREADY, BRESP, BVALID,
-        output ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY
+    modport TB (
+        input  clk, ACLK, AWREADY, WREADY, BRESP, BVALID, ARREADY, RDATA, RRESP, RLAST, RVALID,
+        output ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY,
+               ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
     );
+    // Keep for backward compatibility
+    // // Write testbench modport
+    // modport WTEST (
+    //     input  ACLK, AWREADY, WREADY, BRESP, BVALID,
+    //     output ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY
+    // );
 
-    // Read testbench modport
-    modport RTEST (
-        clocking cb;
-        input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  
-        output ARESTN, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
-    );
+    // // Read testbench modport
+    // modport RTEST (
+    //     clocking cb;
+    //     input  ACLK, ARREADY, RDATA, RRESP, RLAST, RVALID,  
+    //     output ARESTN, ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
+    // );
     
 endinterface
