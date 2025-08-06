@@ -42,6 +42,6 @@ module top;
         .RREADY   (axi.RREADY)
     );
 
-    axi_write_tb tb(axi);
+    Testbench tb(axi.TB);
 
 endmodule

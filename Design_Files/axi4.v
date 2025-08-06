@@ -53,6 +53,8 @@ module axi4 #(
     reg [2:0] write_size, read_size;
     
     wire [ADDR_WIDTH-1:0] write_addr_incr,read_addr_incr;
+    wire write_boundary_cross, read_boundary_cross;  // CHANGE: Added missing wire declarations for boundary check signals
+    wire write_addr_valid, read_addr_valid;          // CHANGE: Added missing wire declarations for address validation signals
     
     
     
@@ -61,8 +63,8 @@ module axi4 #(
     assign  read_addr_incr  = (1 << read_size);
     
     // Address boundary check (4KB boundary = 12 bits)
-    assign write_boundary_cross = ((AWADDR & 12'hFFF) + ((write_burst_len + 1) << write_size)) > 12'hFFF; // write_addr --> AWADDR Was a bug write_burst_len --> write_burst_len+1
-    assign read_boundary_cross = ((ARADDR & 12'hFFF) + ((read_burst_len + 1) << read_size)) > 12'hFFF; //read_addr --> ARADDR Was a bug write_burst_len --> write_burst_len+1
+    assign write_boundary_cross = ((AWADDR & 12'hFFF) + (write_burst_len + 1 << write_size)) > 12'hFFF; // Was a bug write_burst_len --> write_burst_len+1
+    assign read_boundary_cross = ((ARADDR & 12'hFFF) + (read_burst_len + 1 << read_size)) > 12'hFFF; // Was a bug write_burst_len --> write_burst_len+1
     
     // Address range check
     assign write_addr_valid = (write_addr >> 2) < MEMORY_DEPTH;
@@ -237,7 +239,7 @@ module axi4 #(
                 end
                 
                 R_DATA: begin
-                    // Present read data
+                    // Present read data (mem_rdata is now valid from previous cycle)  // CHANGE: Updated comment to clarify memory latency handling
                     if (read_addr_valid && !read_boundary_cross) begin
                         RDATA <= mem_rdata;
                         RRESP <= 2'b00;  // OKAY
@@ -253,12 +255,13 @@ module axi4 #(
                         RVALID <= 1'b0;
                         
                         if (read_burst_cnt > 0) begin
-                            // Continue burst
+                            // Continue burst - increment address and start next read  // CHANGE: Updated comment to clarify burst continuation logic
                             read_addr <= read_addr + read_addr_incr;
                             read_burst_cnt <= read_burst_cnt - 1'b1;
                             
-                            // Start next read
-                            if (read_addr_valid && !read_boundary_cross) begin
+                            // Start next memory read for the incremented address  // CHANGE: Improved address validation and memory enable logic for next beat
+                            if (((read_addr + read_addr_incr) >> 2) < MEMORY_DEPTH && 
+                                !((((read_addr + read_addr_incr) & 16'h0FFF) + ((read_burst_cnt - 1) << read_size)) > 16'h0FFF)) begin
                                 mem_en <= 1'b1;
                                 mem_addr <= (read_addr + read_addr_incr) >> 2;
                             end

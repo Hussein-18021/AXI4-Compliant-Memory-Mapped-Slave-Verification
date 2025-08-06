@@ -56,4 +56,9 @@ package enuming;
         DATA_PATTERN_MODE
     } test_mode_e;
     
+    typedef enum {
+        READ_OP, 
+        WRITE_OP
+    } operation_type_e;
+    
 endpackage
