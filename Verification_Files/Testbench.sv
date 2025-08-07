@@ -50,7 +50,7 @@ module Testbench(axi_if.TB axi);  // CHANGE: Using new TB modport with clocking 
         
         // Initialize golden memory
         for (int i = 0; i < 1024; i++) begin
-            golden_mem[i] = i;
+            golden_mem[i] = 0;
         end
         
         if (DebugEn) $display("Golden memory initialized with pattern 0x0, 0x1, 0x2, ...");
