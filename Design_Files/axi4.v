@@ -211,7 +211,7 @@ module axi4 #(
             // --------------------------
             // Read Channel FSM
             // --------------------------
-            case (read_state)
+           case (read_state)
                 R_IDLE: begin
                     ARREADY <= 1'b1;
                     RVALID <= 1'b0;
@@ -239,7 +239,7 @@ module axi4 #(
                 end
                 
                 R_DATA: begin
-                    // Present read data (mem_rdata is now valid from previous cycle)  // CHANGE: Updated comment to clarify memory latency handling
+                    // Present read data
                     if (read_addr_valid && !read_boundary_cross) begin
                         RDATA <= mem_rdata;
                         RRESP <= 2'b00;  // OKAY
@@ -255,13 +255,12 @@ module axi4 #(
                         RVALID <= 1'b0;
                         
                         if (read_burst_cnt > 0) begin
-                            // Continue burst - increment address and start next read  // CHANGE: Updated comment to clarify burst continuation logic
+                            // Continue burst
                             read_addr <= read_addr + read_addr_incr;
                             read_burst_cnt <= read_burst_cnt - 1'b1;
                             
-                            // Start next memory read for the incremented address  // CHANGE: Improved address validation and memory enable logic for next beat
-                            if (((read_addr + read_addr_incr) >> 2) < MEMORY_DEPTH && 
-                                !((((read_addr + read_addr_incr) & 16'h0FFF) + ((read_burst_cnt - 1) << read_size)) > 16'h0FFF)) begin
+                            // Start next read
+                            if (read_addr_valid && !read_boundary_cross) begin
                                 mem_en <= 1'b1;
                                 mem_addr <= (read_addr + read_addr_incr) >> 2;
                             end
