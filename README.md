@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains a comprehensive functional verification environment for an AXI4-compliant memory-mapped slave design. The verification environment is built using SystemVerilog and Universal Verification Methodology (UVM) principles, providing robust testing capabilities to ensure protocol compliance and functional correctness.
+This repository contains a comprehensive functional verification environment for an AXI4-compliant memory-mapped slave design. The verification environment is built using SystemVerilog and OOP principles, providing robust testing capabilities to ensure protocol compliance and functional correctness.
 
 ## Table of Contents
 
@@ -23,18 +23,17 @@ This repository contains a comprehensive functional verification environment for
 The verification environment implements a layered testbench architecture that follows industry-standard verification methodologies:
 
 ```
-┌─────────────────┐    ┌─────────────────┐
-│   Test Layer    │    │   Assertions    │
-├─────────────────┤    ├─────────────────┤
-│  Testbench.sv   │    │  assertions.sv  │
-└─────────────────┘    └─────────────────┘
+┌────────────────────┐    ┌─────────────────┐
+│ Transaction Layer  │    │   Assertions    │
+├────────────────────┤    ├─────────────────┤
+│  Transaction.sv    │    │  assertions.sv  │
+└────────────────────┘    └─────────────────┘
          │                       │
 ┌─────────────────┐    ┌─────────────────┐
-│ Transaction     │    │   Interface     │
-│    Layer        │    │     Layer       │
+│ Test Layer      │    │   Interface     │
+│                 │    │     Layer       │
 ├─────────────────┤    ├─────────────────┤
-│enhanced_        │    │    intf.sv      │
-│Transaction.sv   │    │                 │
+│ Testbench.sv    │    │    intf.sv      │
 └─────────────────┘    └─────────────────┘
          │                       │
          └───────┬───────────────┘
