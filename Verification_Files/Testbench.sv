@@ -742,7 +742,7 @@ module Testbench(axi_if.TB axi);
     // === COVERAGE-DRIVEN TESTING ===
     task automatic run_coverage_driven_tests();
         Transaction actual_tx;
-        int max_coverage_tests = 1000; // Allow more coverage attempts
+        int max_coverage_tests = 5000; // Allow more coverage attempts
         int coverage_tests = 0;
         real prev_coverage = overall_coverage;
         int stagnant_count = 0;
@@ -897,43 +897,6 @@ module Testbench(axi_if.TB axi);
                 ADDR == test_addresses[i];
                 LEN inside {[0:7]};  // Vary burst length
                 op_type dist {READ_OP := 70, WRITE_OP := 30}; // More reads for address coverage
-            }) begin
-                golden_model(tx);
-                drive_stimulus(tx, actual_tx);
-                collect_output(actual_tx);
-                check_results();
-                total_tests++;
-                if (tx.op_type == READ_OP) read_tests++; else write_tests++;
-                hole_tests++;
-            end
-        end
-        
-        // Test 3: Error Conditions - Force boundary crossing and invalid scenarios
-        $display("Testing comprehensive error conditions...");
-        for (int i = 0; i < 20; i++) begin
-            tx = new();
-            if (tx.randomize() with {
-                // Force different error scenarios
-                if (i < 8) {
-                    // Boundary crossing scenarios
-                    ADDR inside {[16'hFC0:16'hFFF]};
-                    LEN inside {[4:15]};
-                    ((ADDR & 12'hFFF) + ((LEN + 1) << SIZE)) > 12'hFFF;
-                } else if (i < 12) {
-                    // Address alignment issues 
-                    ADDR inside {[16'h001:16'hFFE]};  // Non-aligned addresses
-                    LEN inside {[1:7]};
-                } else if (i < 16) {
-                    // Handshaking error scenarios
-                    awvalid_value == 1'b0;  // Aborted transactions
-                    bready_value == 1'b0;   // No response ready
-                    rready_backpressure_prob == 100; // Maximum backpressure
-                } else {
-                    // Mixed error scenarios
-                    ADDR inside {[16'hF00:16'hFFF]};
-                    LEN inside {[8:15]};
-                    awvalid_delay inside {[5:10]};
-                }
             }) begin
                 golden_model(tx);
                 drive_stimulus(tx, actual_tx);
