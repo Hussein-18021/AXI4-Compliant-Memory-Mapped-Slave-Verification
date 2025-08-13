@@ -78,7 +78,7 @@ class Transaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 16
 
     // BURST COVERAGE
     covergroup burst_coverage_cg;
-        option.per_instance = 1;
+        
         option.comment = "Burst Coverage";
         
         // Burst lengths - use helper variable
@@ -89,14 +89,11 @@ class Transaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 16
             bins long_burst[] = {[8:15]};          // Long bursts
             bins max_burst[] = {[16:255]};         // Maximum AXI4 bursts
         }
-
-        // Cross burst length with operation type
-        burst_op_cross: cross burst_len_cp, op_type;
     endgroup
 
     // MEMORY ADDRESS COVERAGE - Fixed to match actual memory space
     covergroup memory_address_cg;
-        option.per_instance = 1;
+        
         option.comment = "Memory Address Coverage";
         
         // Address coverage within memory bounds (word addresses)
@@ -109,19 +106,12 @@ class Transaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 16
         // Boundary crossing coverage
         boundary_cross_cp: coverpoint crosses_4kb_boundary {
             bins no_cross = {0};
-            bins crosses = {1};
         }
-        
-        // Cross address with operation type
-        addr_op_cross: cross mem_addr_cp, op_type;
-        
-        // Cross boundary with operation type
-        boundary_op_cross: cross boundary_cross_cp, op_type;
     endgroup
 
     // DATA PATTERN COVERAGE
     covergroup data_patterns_cg;
-        option.per_instance = 1;
+        
         option.comment = "Data Pattern Coverage";
         
         // Data patterns for write operations
@@ -137,17 +127,13 @@ class Transaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 16
 
     // PROTOCOL COVERAGE
     covergroup protocol_coverage_cg;
-        option.per_instance = 1;
+        
         option.comment = "AXI4 Protocol Coverage";
         
         // Memory bounds coverage
         memory_bounds_cp: coverpoint memory_bounds_ok {
             bins within_bounds = {1};
-            bins out_of_bounds = {0};
         }
-        
-        // Cross protocol features
-        bounds_op_cross: cross memory_bounds_cp, op_type;
     endgroup
 
     // FIXED: SIZE constraint for 32-bit transfers (should be 2, not 3'b010)

@@ -1,0 +1,2750 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /\top#tb 
+=== Design Unit: work.Testbench
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       2         2         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\top#tb /generate_stimulus/immed__83
+                     Testbench.sv(83)                   0          3
+/\top#tb /run_directed_write_read_sequence/#anonblk#178847320#717#4#/#ublk#178847320#717/immed__719
+                     Testbench.sv(719)                  0          3
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                       165       127        38    76.96%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\top#tb 
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File Testbench.sv
+------------------------------------IF Branch------------------------------------
+    57                                     44139     Count coming in to IF
+    57              1                       1767     
+                                           42372     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    91                                        77     Count coming in to IF
+    91              1                         42     
+    92              1                         35     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    101                                  3250989     Count coming in to IF
+    101             1                      42297     
+    104             1                    3208692     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    106                                  3208692     Count coming in to IF
+    106             1                      15855     
+    108             1                     493893     
+    110             1                      13985     
+    112             1                    2665158     
+                                           19801     All False Count
+Branch totals: 5 hits of 5 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    117                                  3208692     Count coming in to IF
+    117             1                      10963     
+    119             1                     585110     
+    121             1                    2039730     
+                                          572889     All False Count
+Branch totals: 4 hits of 4 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    127                                    32052     Count coming in to IF
+    127             1                      16194     
+                                           15858     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    128                                  1170482     Count coming in to IF
+    128             1                     585346     
+                                          585136     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    139                                    29792     Count coming in to IF
+    139             1                      18829     
+    141             1                      10963     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    169                                    18829     Count coming in to IF
+    169             1                      13985     
+                                            4844     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    183                                    18829     Count coming in to IF
+    183             1                      15855     
+    195             1                       2974     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    189                                    15855     Count coming in to IF
+    189             1                    ***0***     
+                                           15855     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    201                                    18829     Count coming in to IF
+    201             1                       2974     
+                                           15855     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    212                                    15855     Count coming in to IF
+    212             1                    ***0***     
+    212             2                      15855     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    214                                    15855     Count coming in to IF
+    214             1                    ***0***     
+                                           15855     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    222                                   493893     Count coming in to IF
+    222             1                     370107     
+    226             1                     123786     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    237                                   493893     Count coming in to IF
+    237             1                     493893     
+    249             1                    ***0***     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    243                                   497839     Count coming in to IF
+    243             1                    ***0***     
+                                          497839     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    265                                    15855     Count coming in to IF
+    265             1                      13985     
+    279             1                       1870     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    271                                    13985     Count coming in to IF
+    271             1                    ***0***     
+                                           13985     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    287                                     1870     Count coming in to IF
+    287             1                    ***0***     
+                                            1870     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    300                                    15855     Count coming in to IF
+    300             1                        437     
+    303             1                      15418     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    349                                  ***0***     Count coming in to IF
+    349             1                    ***0***     
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    365                                   585110     Count coming in to IF
+    365             1                      40660     
+    388             1                     544450     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    372                                    10073     Count coming in to IF
+    372             1                    ***0***     
+                                           10073     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    398                                     3490     Count coming in to IF
+    398             1                    ***0***     
+                                            3490     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    415                                   585110     Count coming in to IF
+    415             1                        333     
+    418             1                      10630     
+                                          574147     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    423                                   585110     Count coming in to IF
+    423             1                     574147     
+                                           10963     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    445                                    29792     Count coming in to IF
+    445             1                      18829     
+    496             1                      10963     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    448                                    18829     Count coming in to IF
+    448             1                    ***0***     
+                                           18829     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    457                                    18829     Count coming in to IF
+    457             1                      15855     
+    491             1                       2974     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    459                                    15855     Count coming in to IF
+    459             1                       1870     
+    476             1                      13985     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    464                                     1870     Count coming in to IF
+    464             1                    ***0***     
+    466             1                       1870     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    471                                    58051     Count coming in to IF
+    471             1                      58051     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    478                                    13985     Count coming in to IF
+    478             1                    ***0***     
+    480             1                      13985     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    485                                   435842     Count coming in to IF
+    485             1                     435842     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    503                                   585110     Count coming in to IF
+    503             1                    ***0***     
+    506             1                     585110     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    534                                    29792     Count coming in to IF
+    534             1                    ***0***     
+                                           29792     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    551                                    29792     Count coming in to IF
+    551             1                      18829     
+    587             1                      10963     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    559                                    18829     Count coming in to IF
+    559             1                        437     
+                                           18392     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    566                                    18829     Count coming in to IF
+    566             1                      18829     
+    577             1                    ***0***     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    569                                   602606     Count coming in to IF
+    569             1                    ***0***     
+                                          602606     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    576                                    18829     Count coming in to IF
+    576             1                    ***0***     
+                                           18829     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    584                                    18829     Count coming in to IF
+    584             1                      15418     
+    585             1                       3411     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    595                                    10963     Count coming in to IF
+    595             1                      10963     
+    611             1                    ***0***     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    598                                   585110     Count coming in to IF
+    598             1                       5869     
+                                          579241     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    604                                   585110     Count coming in to IF
+    604             1                       4633     
+                                          580477     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    610                                    10963     Count coming in to IF
+    610             1                        836     
+                                           10127     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    617                                    10963     Count coming in to IF
+    617             1                      10071     
+                                             892     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    623                                    29792     Count coming in to IF
+    623             1                      28463     
+    626             1                       1329     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    628                                     1329     Count coming in to IF
+    628             1                        437     
+    630             1                        892     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    640                                   101434     Count coming in to CASE
+    641             1                      88592     
+    642             1                    ***0***     
+    643             1                      12842     
+    644             1                    ***0***     
+    645             1                    ***0***     
+Branch totals: 2 hits of 5 branches = 40.00%
+
+------------------------------------IF Branch------------------------------------
+    687                                       24     Count coming in to IF
+    687             1                    ***0***     
+                                              24     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    710                                       24     Count coming in to IF
+    710             1                    ***0***     
+                                              24     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    713                                       24     Count coming in to IF
+    713             1                    ***0***     
+    713             2                         24     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    735                                       24     Count coming in to IF
+    735             1                         24     
+    735             2                    ***0***     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    759                                    14240     Count coming in to IF
+    759             1                       1424     
+                                           12816     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    765                                     1424     Count coming in to IF
+    765             1                        284     
+                                            1140     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    769                                     1424     Count coming in to IF
+    769             1                        488     
+    776             1                        936     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    771                                      488     Count coming in to IF
+    771             1                        118     
+                                             370     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    783                                        3     Count coming in to IF
+    783             1                          2     
+    785             1                          1     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    799                                    14240     Count coming in to IF
+    799             1                         47     
+    829             1                      14193     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    832                                    14193     Count coming in to IF
+    832             1                       6391     
+    832             2                       7802     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    873                                     1770     Count coming in to IF
+    873             1                       1298     
+                                             472     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    887                                     1298     Count coming in to IF
+    887             1                        690     
+    887             2                        608     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    896                                     4720     Count coming in to IF
+    896             1                       4720     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    906                                     4720     Count coming in to IF
+    906             1                       2948     
+    906             2                       1772     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    915                                     2360     Count coming in to IF
+    915             1                       1651     
+                                             709     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    943                                     1651     Count coming in to IF
+    943             1                        853     
+    943             2                        798     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    953                                     4720     Count coming in to IF
+    953             1                       4720     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    976                                     2950     Count coming in to IF
+    976             1                       2950     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    996                                      118     Count coming in to IF
+    996             1                        118     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    1051                                     120     Count coming in to IF
+    1051            1                        120     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    1075                                      15     Count coming in to IF
+    1075            1                         15     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    1094                                       3     Count coming in to IF
+    1094            1                          3     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    1117                                       3     Count coming in to IF
+    1117            1                          3     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    1143                                      30     Count coming in to IF
+    1143            1                          6     
+                                              24     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    1168                                       3     Count coming in to IF
+    1168            1                    ***0***     
+    1170            1                          3     
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    1174                                       3     Count coming in to IF
+    1174            1                          2     
+    1176            1                          1     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      79        45        34    56.96%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\top#tb  --
+
+  File Testbench.sv
+----------------Focused Condition View-------------------
+Line       57 Item    1  ((total_tests % 25) == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       91 Item    1  (tx.op_type == READ_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       106 Item    1  (axi.AWVALID && axi.AWREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+   Input Term   Covered  Reason for no coverage   Hint
+  -----------  --------  -----------------------  --------------
+  axi.AWVALID         Y
+  axi.AWREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          3  axi.AWVALID_0         -                             
+  Row   2:          3  axi.AWVALID_1         axi.AWREADY                   
+  Row   3:    ***0***  axi.AWREADY_0         axi.AWVALID                   
+  Row   4:          3  axi.AWREADY_1         axi.AWVALID                   
+
+----------------Focused Condition View-------------------
+Line       108 Item    1  (axi.WVALID && axi.WREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       110 Item    1  (axi.BVALID && axi.BREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       112 Item    1  ((axi.AWVALID ~| axi.WVALID) && ~axi.BVALID)
+Condition totals: 2 of 3 input terms covered = 66.66%
+
+   Input Term   Covered  Reason for no coverage   Hint
+  -----------  --------  -----------------------  --------------
+  axi.AWVALID         N  '_1' not hit             Hit '_1'
+   axi.WVALID         Y
+   axi.BVALID         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          3  axi.AWVALID_0         (~axi.BVALID && ~axi.WVALID)  
+  Row   2:    ***0***  axi.AWVALID_1         ~axi.WVALID                   
+  Row   3:          3  axi.WVALID_0          (~axi.BVALID && ~axi.AWVALID) 
+  Row   4:          3  axi.WVALID_1          ~axi.AWVALID                  
+  Row   5:          3  axi.BVALID_0          (axi.AWVALID ~| axi.WVALID)   
+  Row   6:          3  axi.BVALID_1          (axi.AWVALID ~| axi.WVALID)   
+
+----------------Focused Condition View-------------------
+Line       117 Item    1  (axi.ARVALID && axi.ARREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+   Input Term   Covered  Reason for no coverage   Hint
+  -----------  --------  -----------------------  --------------
+  axi.ARVALID         Y
+  axi.ARREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          3  axi.ARVALID_0         -                             
+  Row   2:          3  axi.ARVALID_1         axi.ARREADY                   
+  Row   3:    ***0***  axi.ARREADY_0         axi.ARVALID                   
+  Row   4:          3  axi.ARREADY_1         axi.ARVALID                   
+
+----------------Focused Condition View-------------------
+Line       119 Item    1  (axi.RVALID && axi.RREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       121 Item    1  (axi.ARVALID ~| axi.RVALID)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+   Input Term   Covered  Reason for no coverage   Hint
+  -----------  --------  -----------------------  --------------
+  axi.ARVALID         N  '_1' not hit             Hit '_1'
+   axi.RVALID         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          3  axi.ARVALID_0         ~axi.RVALID                   
+  Row   2:    ***0***  axi.ARVALID_1         ~axi.RVALID                   
+  Row   3:          3  axi.RVALID_0          ~axi.ARVALID                  
+  Row   4:          3  axi.RVALID_1          ~axi.ARVALID                  
+
+----------------Focused Condition View-------------------
+Line       139 Item    1  (tr.tr.op_type == WRITE_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       169 Item    1  (tr.tr.awvalid_delay > 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       189 Item    1  (timeout_counter >= MAX_TIMEOUT)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                        Input Term   Covered  Reason for no coverage   Hint
+                       -----------  --------  -----------------------  --------------
+  (timeout_counter >= MAX_TIMEOUT)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                          Non-masking condition(s)      
+ ---------  ---------  --------------------                -------------------------     
+  Row   1:          3  (timeout_counter >= MAX_TIMEOUT)_0  -                             
+  Row   2:    ***0***  (timeout_counter >= MAX_TIMEOUT)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       214 Item    1  ((tr.tr.ADDR % (1 << tr.tr.SIZE)) != 0)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                               Input Term   Covered  Reason for no coverage   Hint
+                              -----------  --------  -----------------------  --------------
+  ((tr.tr.ADDR % (1 << tr.tr.SIZE)) != 0)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                                 Non-masking condition(s)      
+ ---------  ---------  --------------------                       -------------------------     
+  Row   1:          3  ((tr.tr.ADDR % (1 << tr.tr.SIZE)) != 0)_0  -                             
+  Row   2:    ***0***  ((tr.tr.ADDR % (1 << tr.tr.SIZE)) != 0)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       222 Item    1  (tr.tr.wvalid_delay[i] > 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       243 Item    1  (timeout_counter >= MAX_TIMEOUT)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                        Input Term   Covered  Reason for no coverage   Hint
+                       -----------  --------  -----------------------  --------------
+  (timeout_counter >= MAX_TIMEOUT)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                          Non-masking condition(s)      
+ ---------  ---------  --------------------                -------------------------     
+  Row   1:          3  (timeout_counter >= MAX_TIMEOUT)_0  -                             
+  Row   2:    ***0***  (timeout_counter >= MAX_TIMEOUT)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       271 Item    1  (timeout_counter >= MAX_TIMEOUT)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                        Input Term   Covered  Reason for no coverage   Hint
+                       -----------  --------  -----------------------  --------------
+  (timeout_counter >= MAX_TIMEOUT)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                          Non-masking condition(s)      
+ ---------  ---------  --------------------                -------------------------     
+  Row   1:          3  (timeout_counter >= MAX_TIMEOUT)_0  -                             
+  Row   2:    ***0***  (timeout_counter >= MAX_TIMEOUT)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       287 Item    1  (timeout_counter >= MAX_TIMEOUT)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                        Input Term   Covered  Reason for no coverage   Hint
+                       -----------  --------  -----------------------  --------------
+  (timeout_counter >= MAX_TIMEOUT)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                          Non-masking condition(s)      
+ ---------  ---------  --------------------                -------------------------     
+  Row   1:          3  (timeout_counter >= MAX_TIMEOUT)_0  -                             
+  Row   2:    ***0***  (timeout_counter >= MAX_TIMEOUT)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       346 Item    1  (axi.ARREADY !== 1'b1)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+              Input Term   Covered  Reason for no coverage   Hint
+             -----------  --------  -----------------------  --------------
+  (axi.ARREADY !== 1'b1)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                Non-masking condition(s)      
+ ---------  ---------  --------------------      -------------------------     
+  Row   1:          3  (axi.ARREADY !== 1'b1)_0  -                             
+  Row   2:    ***0***  (axi.ARREADY !== 1'b1)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       349 Item    1  (timeout_counter >= MAX_TIMEOUT)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                        Input Term   Covered  Reason for no coverage   Hint
+                       -----------  --------  -----------------------  --------------
+  (timeout_counter >= MAX_TIMEOUT)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                          Non-masking condition(s)      
+ ---------  ---------  --------------------                -------------------------     
+  Row   1:    ***0***  (timeout_counter >= MAX_TIMEOUT)_0  -                             
+  Row   2:    ***0***  (timeout_counter >= MAX_TIMEOUT)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       369 Item    1  (axi.RVALID !== 1'b1)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       372 Item    1  (timeout_counter >= MAX_TIMEOUT)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                        Input Term   Covered  Reason for no coverage   Hint
+                       -----------  --------  -----------------------  --------------
+  (timeout_counter >= MAX_TIMEOUT)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                          Non-masking condition(s)      
+ ---------  ---------  --------------------                -------------------------     
+  Row   1:          3  (timeout_counter >= MAX_TIMEOUT)_0  -                             
+  Row   2:    ***0***  (timeout_counter >= MAX_TIMEOUT)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       395 Item    1  (axi.RVALID !== 1'b1)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       398 Item    1  (timeout_counter >= MAX_TIMEOUT)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                        Input Term   Covered  Reason for no coverage   Hint
+                       -----------  --------  -----------------------  --------------
+  (timeout_counter >= MAX_TIMEOUT)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                          Non-masking condition(s)      
+ ---------  ---------  --------------------                -------------------------     
+  Row   1:          3  (timeout_counter >= MAX_TIMEOUT)_0  -                             
+  Row   2:    ***0***  (timeout_counter >= MAX_TIMEOUT)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       415 Item    1  ((i == tr.tr.LEN) && ~rlast_captured)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       418 Item    1  ((i == tr.tr.LEN) && rlast_captured)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (i == tr.tr.LEN)         Y
+    rlast_captured         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          3  (i == tr.tr.LEN)_0    -                             
+  Row   2:          3  (i == tr.tr.LEN)_1    rlast_captured                
+  Row   3:    ***0***  rlast_captured_0      (i == tr.tr.LEN)              
+  Row   4:          3  rlast_captured_1      (i == tr.tr.LEN)              
+
+----------------Focused Condition View-------------------
+Line       423 Item    1  (i < tr.tr.LEN)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       445 Item    1  (tr.tr.op_type == WRITE_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       448 Item    1  (tr.tr.WDATA.size() == 0)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                 Input Term   Covered  Reason for no coverage   Hint
+                -----------  --------  -----------------------  --------------
+  (tr.tr.WDATA.size() == 0)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                   Non-masking condition(s)      
+ ---------  ---------  --------------------         -------------------------     
+  Row   1:          3  (tr.tr.WDATA.size() == 0)_0  -                             
+  Row   2:    ***0***  (tr.tr.WDATA.size() == 0)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       464 Item    1  (tr.tr.exceeds_memory_range() || tr.tr.crosses_4KB_boundary())
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                    Input Term   Covered  Reason for no coverage   Hint
+                   -----------  --------  -----------------------  --------------
+  tr.tr.exceeds_memory_range()         N  '_1' not hit             Hit '_1'
+  tr.tr.crosses_4KB_boundary()         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                      Non-masking condition(s)      
+ ---------  ---------  --------------------            -------------------------     
+  Row   1:          3  tr.tr.exceeds_memory_range()_0  ~tr.tr.crosses_4KB_boundary() 
+  Row   2:    ***0***  tr.tr.exceeds_memory_range()_1  -                             
+  Row   3:          3  tr.tr.crosses_4KB_boundary()_0  ~tr.tr.exceeds_memory_range() 
+  Row   4:    ***0***  tr.tr.crosses_4KB_boundary()_1  ~tr.tr.exceeds_memory_range() 
+
+----------------Focused Condition View-------------------
+Line       471 Item    1  ((start_addr + i) < 1024)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                 Input Term   Covered  Reason for no coverage   Hint
+                -----------  --------  -----------------------  --------------
+  ((start_addr + i) < 1024)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                   Non-masking condition(s)      
+ ---------  ---------  --------------------         -------------------------     
+  Row   1:    ***0***  ((start_addr + i) < 1024)_0  -                             
+  Row   2:          3  ((start_addr + i) < 1024)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       478 Item    1  (tr.tr.exceeds_memory_range() || tr.tr.crosses_4KB_boundary())
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+                    Input Term   Covered  Reason for no coverage   Hint
+                   -----------  --------  -----------------------  --------------
+  tr.tr.exceeds_memory_range()         N  '_1' not hit             Hit '_1'
+  tr.tr.crosses_4KB_boundary()         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                      Non-masking condition(s)      
+ ---------  ---------  --------------------            -------------------------     
+  Row   1:          3  tr.tr.exceeds_memory_range()_0  ~tr.tr.crosses_4KB_boundary() 
+  Row   2:    ***0***  tr.tr.exceeds_memory_range()_1  -                             
+  Row   3:          3  tr.tr.crosses_4KB_boundary()_0  ~tr.tr.exceeds_memory_range() 
+  Row   4:    ***0***  tr.tr.crosses_4KB_boundary()_1  ~tr.tr.exceeds_memory_range() 
+
+----------------Focused Condition View-------------------
+Line       485 Item    1  ((start_addr + i) < 1024)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                 Input Term   Covered  Reason for no coverage   Hint
+                -----------  --------  -----------------------  --------------
+  ((start_addr + i) < 1024)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                   Non-masking condition(s)      
+ ---------  ---------  --------------------         -------------------------     
+  Row   1:    ***0***  ((start_addr + i) < 1024)_0  -                             
+  Row   2:          3  ((start_addr + i) < 1024)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       503 Item    1  (tr.tr.exceeds_memory_range() || tr.tr.crosses_4KB_boundary() || ((start_addr + i) >= 1024))
+Condition totals: 0 of 3 input terms covered = 0.00%
+
+                    Input Term   Covered  Reason for no coverage   Hint
+                   -----------  --------  -----------------------  --------------
+  tr.tr.exceeds_memory_range()         N  '_1' not hit             Hit '_1'
+  tr.tr.crosses_4KB_boundary()         N  '_1' not hit             Hit '_1'
+    ((start_addr + i) >= 1024)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                      Non-masking condition(s)      
+ ---------  ---------  --------------------            -------------------------     
+  Row   1:          3  tr.tr.exceeds_memory_range()_0  ~(tr.tr.crosses_4KB_boundary() || ((start_addr + i) >= 1024))
+  Row   2:    ***0***  tr.tr.exceeds_memory_range()_1  -                             
+  Row   3:          3  tr.tr.crosses_4KB_boundary()_0  (~tr.tr.exceeds_memory_range() && ~((start_addr + i) >= 1024))
+  Row   4:    ***0***  tr.tr.crosses_4KB_boundary()_1  ~tr.tr.exceeds_memory_range() 
+  Row   5:          3  ((start_addr + i) >= 1024)_0    (~tr.tr.exceeds_memory_range() && ~tr.tr.crosses_4KB_boundary())
+  Row   6:    ***0***  ((start_addr + i) >= 1024)_1    (~tr.tr.exceeds_memory_range() && ~tr.tr.crosses_4KB_boundary())
+
+----------------Focused Condition View-------------------
+Line       534 Item    1  (expected_queue.size() != actual_queue.size())
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                      Input Term   Covered  Reason for no coverage   Hint
+                                     -----------  --------  -----------------------  --------------
+  (expected_queue.size() != actual_queue.size())         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                                        Non-masking condition(s)      
+ ---------  ---------  --------------------                              -------------------------     
+  Row   1:          3  (expected_queue.size() != actual_queue.size())_0  -                             
+  Row   2:    ***0***  (expected_queue.size() != actual_queue.size())_1  -                             
+
+----------------Focused Condition View-------------------
+Line       541 Item    1  (expected_queue.size() > 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       551 Item    1  (expected.expected.op_type == WRITE_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       559 Item    1  (expected.expected.BRESP != actual.actual.BRESP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       566 Item    1  (actual.actual.WDATA.size() == expected.expected.WDATA.size())
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                                      Input Term   Covered  Reason for no coverage   Hint
+                                                     -----------  --------  -----------------------  --------------
+  (actual.actual.WDATA.size() == expected.expected.WDATA.size())         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                                                        Non-masking condition(s)      
+ ---------  ---------  --------------------                                              -------------------------     
+  Row   1:    ***0***  (actual.actual.WDATA.size() == expected.expected.WDATA.size())_0  -                             
+  Row   2:          3  (actual.actual.WDATA.size() == expected.expected.WDATA.size())_1  -                             
+
+----------------Focused Condition View-------------------
+Line       569 Item    1  (actual.actual.WDATA[i] != expected.expected.WDATA[i])
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                              Input Term   Covered  Reason for no coverage   Hint
+                                             -----------  --------  -----------------------  --------------
+  (actual.actual.WDATA[i] != expected.expected.WDATA[i])         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                                                Non-masking condition(s)      
+ ---------  ---------  --------------------                                      -------------------------     
+  Row   1:          3  (actual.actual.WDATA[i] != expected.expected.WDATA[i])_0  -                             
+  Row   2:    ***0***  (actual.actual.WDATA[i] != expected.expected.WDATA[i])_1  -                             
+
+----------------Focused Condition View-------------------
+Line       584 Item    1  (actual.actual.BRESP == OKAY)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       595 Item    1  (actual.actual.RDATA.size() == expected.expected.RDATA.size())
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                                      Input Term   Covered  Reason for no coverage   Hint
+                                                     -----------  --------  -----------------------  --------------
+  (actual.actual.RDATA.size() == expected.expected.RDATA.size())         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                                                        Non-masking condition(s)      
+ ---------  ---------  --------------------                                              -------------------------     
+  Row   1:    ***0***  (actual.actual.RDATA.size() == expected.expected.RDATA.size())_0  -                             
+  Row   2:          3  (actual.actual.RDATA.size() == expected.expected.RDATA.size())_1  -                             
+
+----------------Focused Condition View-------------------
+Line       598 Item    1  (actual.actual.RDATA[i] != expected.expected.RDATA[i])
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       604 Item    1  (actual.actual.RRESP[i] != expected.expected.RRESP[i])
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       617 Item    1  (data_match && test_passed)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       628 Item    1  (expected.expected.op_type == WRITE_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       713 Item    1  (tx.op_type == READ_OP)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+               Input Term   Covered  Reason for no coverage   Hint
+              -----------  --------  -----------------------  --------------
+  (tx.op_type == READ_OP)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                 Non-masking condition(s)      
+ ---------  ---------  --------------------       -------------------------     
+  Row   1:          3  (tx.op_type == READ_OP)_0  -                             
+  Row   2:    ***0***  (tx.op_type == READ_OP)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       735 Item    1  (tx.op_type == READ_OP)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+               Input Term   Covered  Reason for no coverage   Hint
+              -----------  --------  -----------------------  --------------
+  (tx.op_type == READ_OP)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                 Non-masking condition(s)      
+ ---------  ---------  --------------------       -------------------------     
+  Row   1:    ***0***  (tx.op_type == READ_OP)_0  -                             
+  Row   2:          3  (tx.op_type == READ_OP)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       753 Item    1  ((overall_coverage < 100) && (coverage_tests < max_coverage_tests))
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       759 Item    1  ((coverage_tests % 10) == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       765 Item    1  ((coverage_tests % 25) == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       769 Item    1  (overall_coverage == prev_coverage)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       771 Item    1  (stagnant_count >= 3)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       783 Item    1  (overall_coverage >= 100)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       832 Item    1  (tx.op_type == READ_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       887 Item    1  (tx.op_type == READ_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       906 Item    1  (tx.op_type == READ_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       943 Item    1  (tx.op_type == READ_OP)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       996 Item    1  (tx != null)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (tx != null)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (tx != null)_0        -                             
+  Row   2:          3  (tx != null)_1        -                             
+
+----------------Focused Condition View-------------------
+Line       1094 Item    1  (tx != null)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (tx != null)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (tx != null)_0        -                             
+  Row   2:          3  (tx != null)_1        -                             
+
+----------------Focused Condition View-------------------
+Line       1117 Item    1  (tx != null)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (tx != null)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (tx != null)_0        -                             
+  Row   2:          3  (tx != null)_1        -                             
+
+----------------Focused Condition View-------------------
+Line       1143 Item    1  ((total_tests % 5) == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       1168 Item    1  (failed_tests == 0)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+  (failed_tests == 0)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:          3  (failed_tests == 0)_0  -                             
+  Row   2:    ***0***  (failed_tests == 0)_1  -                             
+
+----------------Focused Condition View-------------------
+Line       1174 Item    1  (overall_coverage >= 100)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                      1         1         0   100.00%
+
+================================Expression Details================================
+
+Expression Coverage for instance /\top#tb  --
+
+  File Testbench.sv
+----------------Focused Expression View-----------------
+Line       234 Item    1  (i == (tr.tr.WDATA.size() - 1))
+Expression totals: 1 of 1 input term covered = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                     508       461        47    90.74%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\top#tb  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File Testbench.sv
+    51              1                      44139     
+    54              1                      44139     
+    58              1                       1767     
+    64              1                          3     
+    66              1                          3     
+    67              1                          3     
+    67              2                          3     
+    67              3                          3     
+    67              4                          3     
+    68              1                          3     
+    68              2                          3     
+    68              3                          3     
+    68              4                          3     
+    69              1                          3     
+    69              2                          3     
+    69              3                          3     
+    69              4                          3     
+    70              1                          3     
+    73              1                          3     
+    73              2                       3072     
+    74              1                       3072     
+    77              1                          3     
+    82              1                         77     
+    88              1                         77     
+    89              1                         77     
+    91              1                         42     
+    92              1                         35     
+    95              1                         77     
+    99              1                    3250989     
+    102             1                      42297     
+    103             1                      42297     
+    107             1                      15855     
+    109             1                     493893     
+    111             1                      13985     
+    113             1                    2665158     
+    118             1                      10963     
+    120             1                     585110     
+    122             1                    2039730     
+    127             1                      16194     
+    128             1                     585346     
+    133             1                      29792     
+    134             1                      29792     
+    135             1                      29792     
+    136             1                      29792     
+    137             1                      29792     
+    140             1                      18829     
+    143             1                      10963     
+    144             1                      10963     
+    152             1                      18829     
+    154             1                      18829     
+    155             1                      18829     
+    156             1                      18829     
+    157             1                      18829     
+    158             1                      18829     
+    159             1                      18829     
+    161             1                      18829     
+    164             1                      18829     
+    164             2                     602606     
+    167             1                      18829     
+    170             1                      13985     
+    171             1                      27829     
+    171             2                      27829     
+    172             1                      13985     
+    175             1                      18829     
+    178             1                      18829     
+    179             1                      18829     
+    180             1                      18829     
+    181             1                      18829     
+    184             1                      15855     
+    185             1                      15855     
+    186             1                      15855     
+    187             1                      15855     
+    188             1                      15855     
+    190             1                    ***0***     
+    191             1                    ***0***     
+    194             1                      15855     
+    196             1                       2974     
+    197             1                       2974     
+    199             1                      18829     
+    202             1                       2974     
+    203             1                       2974     
+    204             1                       2974     
+    205             1                       2974     
+    208             1                      15855     
+    215             1                    ***0***     
+    218             1                      15855     
+    219             1                      15855     
+    220             1                     493893     
+    223             1                     370107     
+    224             1                     740616     
+    224             2                     740616     
+    225             1                     370107     
+    227             1                     123786     
+    230             1                     493893     
+    233             1                     493893     
+    234             1                     493893     
+    235             1                     493893     
+    238             1                     493893     
+    239             1                     493893     
+    240             1                     497839     
+    241             1                     497839     
+    242             1                     497839     
+    244             1                    ***0***     
+    245             1                    ***0***     
+    248             1                     493893     
+    250             1                    ***0***     
+    251             1                    ***0***     
+    254             1                     493893     
+    255             1                     493893     
+    256             1                     493893     
+    257             1                     493893     
+    260             1                      15855     
+    262             1                      15855     
+    263             1                      15855     
+    266             1                      13985     
+    267             1                      13985     
+    268             1                      13985     
+    269             1                      13985     
+    270             1                      13985     
+    272             1                    ***0***     
+    273             1                    ***0***     
+    276             1                      13985     
+    277             1                      13985     
+    278             1                      13985     
+    280             1                       1870     
+    283             1                       1870     
+    284             1                       1870     
+    285             1                       1870     
+    286             1                       1870     
+    288             1                    ***0***     
+    289             1                    ***0***     
+    294             1                       1870     
+    295             1                       1870     
+    297             1                       1870     
+    301             1                        437     
+    302             1                        437     
+    304             1                      15418     
+    305             1                      15418     
+    308             1                      15855     
+    309             1                      15855     
+    311             1                      15855     
+    313             1                      15855     
+    325             1                      10963     
+    327             1                      10963     
+    330             1                      10963     
+    331             1                      10963     
+    334             1                      16273     
+    334             2                      16273     
+    336             1                      10963     
+    337             1                      10963     
+    338             1                      10963     
+    339             1                      10963     
+    341             1                      10963     
+    345             1                      10963     
+    346             1                      10963     
+    347             1                    ***0***     
+    348             1                    ***0***     
+    350             1                    ***0***     
+    351             1                    ***0***     
+    354             1                      10963     
+    355             1                      10963     
+    357             1                      10963     
+    360             1                      10963     
+    360             2                     585110     
+    362             1                     876006     
+    362             2                     876006     
+    366             1                      40660     
+    368             1                      40660     
+    369             1                      50733     
+    370             1                      10073     
+    371             1                      10073     
+    373             1                    ***0***     
+    374             1                    ***0***     
+    377             1                      40660     
+    380             1                      40660     
+    381             1                      40660     
+    382             1                      40660     
+    384             1                      40660     
+    390             1                     544450     
+    391             1                    1086612     
+    391             2                    1086612     
+    393             1                     544450     
+    394             1                     544450     
+    395             1                     547940     
+    396             1                       3490     
+    397             1                       3490     
+    399             1                    ***0***     
+    400             1                    ***0***     
+    403             1                     544450     
+    406             1                     544450     
+    407             1                     544450     
+    408             1                     544450     
+    410             1                     544450     
+    416             1                        333     
+    417             1                        333     
+    419             1                      10630     
+    424             1                     574147     
+    425             1                     574147     
+    429             1                      10963     
+    431             1                      10963     
+    439             1                      29792     
+    440             1                      29792     
+    441             1                      29792     
+    442             1                      29792     
+    443             1                      29792     
+    449             1                    ***0***     
+    450             1                    ***0***     
+    453             1                      18829     
+    454             1                      18829     
+    454             2                     602606     
+    465             1                    ***0***     
+    467             1                       1870     
+    469             1                       1870     
+    470             1                       1870     
+    470             2                      58051     
+    472             1                      58051     
+    479             1                    ***0***     
+    481             1                      13985     
+    483             1                      13985     
+    484             1                      13985     
+    484             2                     435842     
+    486             1                     435842     
+    493             1                       2974     
+    498             1                      10963     
+    499             1                      10963     
+    501             1                      10963     
+    502             1                      10963     
+    502             2                     585110     
+    504             1                    ***0***     
+    505             1                    ***0***     
+    507             1                     585110     
+    508             1                     585110     
+    513             1                      29792     
+    518             1                      29792     
+    521             1                      29792     
+    532             1                      29792     
+    535             1                    ***0***     
+    537             1                    ***0***     
+    538             1                    ***0***     
+    541             1                      59584     
+    542             1                      29792     
+    543             1                      29792     
+    544             1                      29792     
+    545             1                      29792     
+    548             1                      29792     
+    549             1                      29792     
+    553             1                      18829     
+    555             1                      18829     
+    560             1                        437     
+    562             1                        437     
+    567             1                      18829     
+    568             1                      18829     
+    570             1                    ***0***     
+    571             1                    ***0***     
+    573             1                    ***0***     
+    576             1                    ***0***     
+    578             1                    ***0***     
+    580             1                    ***0***     
+    584             1                      15418     
+    585             1                       3411     
+    589             1                      10963     
+    591             1                      10963     
+    596             1                      10963     
+    597             1                      10963     
+    599             1                       5869     
+    600             1                       5869     
+    605             1                       4633     
+    607             1                       4633     
+    610             1                        836     
+    612             1                    ***0***     
+    614             1                    ***0***     
+    618             1                      10071     
+    624             1                      28463     
+    625             1                      28463     
+    627             1                       1329     
+    629             1                        437     
+    631             1                        892     
+    634             1                      29792     
+    641             1                      88592     
+    642             1                    ***0***     
+    643             1                      12842     
+    644             1                    ***0***     
+    645             1                    ***0***     
+    650             1                      15855     
+    654             1                      18829     
+    655             1                      18829     
+    656             1                      56438     
+    656             2                      56438     
+    657             1                      18829     
+    658             1                      37658     
+    658             2                      37658     
+    659             1                      18829     
+    663             1                      10966     
+    664             1                      10966     
+    665             1                      32709     
+    665             2                      32709     
+    666             1                      10966     
+    667             1                      21932     
+    667             2                      21932     
+    676             1                          6     
+    677             1                          6     
+    679             1                          6     
+    682             1                          6     
+    685             1                          6     
+    685             2                         24     
+    686             1                         24     
+    696             1                    ***0***     
+    697             1                    ***0***     
+    698             1                    ***0***     
+    701             1                    ***0***     
+    704             1                         24     
+    705             1                         24     
+    706             1                         24     
+    707             1                         24     
+    708             1                         24     
+    710             1                    ***0***     
+    711             1                         24     
+    712             1                         24     
+    713             1                    ***0***     
+    713             2                         24     
+    717             1                          6     
+    717             2                         24     
+    718             1                         24     
+    727             1                         24     
+    728             1                         24     
+    729             1                         24     
+    730             1                         24     
+    731             1                         24     
+    733             1                         24     
+    734             1                         24     
+    735             1                         24     
+    735             2                    ***0***     
+    739             1                          6     
+    745             1                          3     
+    746             1                          3     
+    747             1                          3     
+    748             1                          3     
+    750             1                          3     
+    751             1                          3     
+    753             1                      14243     
+    755             1                      14240     
+    756             1                      14240     
+    761             1                       1424     
+    765             1                        284     
+    770             1                        488     
+    772             1                        118     
+    773             1                        118     
+    774             1                        118     
+    777             1                        936     
+    779             1                       1424     
+    784             1                          2     
+    786             1                          1     
+    794             1                      14240     
+    796             1                      14240     
+    826             1                         47     
+    827             1                         47     
+    828             1                         47     
+    830             1                      14193     
+    831             1                      14193     
+    832             1                       6391     
+    832             2                       7802     
+    835             1                      14240     
+    836             1                      14240     
+    837             1                      14240     
+    838             1                      14240     
+    841             1                      14240     
+    846             1                        118     
+    860             1                        118     
+    862             1                        118     
+    864             1                        118     
+    866             1                        118     
+    867             1                        118     
+    870             1                        118     
+    871             1                        118     
+    871             2                       1770     
+    872             1                       1770     
+    882             1                       1298     
+    883             1                       1298     
+    884             1                       1298     
+    885             1                       1298     
+    886             1                       1298     
+    887             1                        690     
+    887             2                        608     
+    888             1                       1298     
+    893             1                        118     
+    894             1                       4838     
+    895             1                       4720     
+    901             1                       4720     
+    902             1                       4720     
+    903             1                       4720     
+    904             1                       4720     
+    905             1                       4720     
+    906             1                       2948     
+    906             2                       1772     
+    907             1                       4720     
+    912             1                        118     
+    913             1                        118     
+    913             2                       2360     
+    914             1                       2360     
+    938             1                       1651     
+    939             1                       1651     
+    940             1                       1651     
+    941             1                       1651     
+    942             1                       1651     
+    943             1                        853     
+    943             2                        798     
+    944             1                       1651     
+    949             1                        118     
+    950             1                        708     
+    951             1                        590     
+    951             2                       4720     
+    952             1                       4720     
+    960             1                       4720     
+    961             1                       4720     
+    962             1                       4720     
+    963             1                       4720     
+    964             1                       4720     
+    965             1                       4720     
+    966             1                       4720     
+    972             1                        118     
+    973             1                        708     
+    974             1                        590     
+    974             2                       2950     
+    975             1                       2950     
+    982             1                       2950     
+    983             1                       2950     
+    984             1                       2950     
+    985             1                       2950     
+    986             1                       2950     
+    987             1                       2950     
+    988             1                       2950     
+    993             1                        118     
+    997             1                        118     
+    998             1                        118     
+    1001            1                        118     
+    1007            1                         30     
+    1008            1                         30     
+    1009            1                         30     
+    1010            1                         30     
+    1011            1                         30     
+    1014            1                         30     
+    1022            1                          3     
+    1025            1                          3     
+    1034            1                          3     
+    1045            1                          3     
+    1048            1                         18     
+    1049            1                        135     
+    1050            1                        120     
+    1060            1                        120     
+    1062            1                        120     
+    1063            1                        120     
+    1064            1                        120     
+    1065            1                        120     
+    1066            1                        120     
+    1067            1                        120     
+    1073            1                         18     
+    1074            1                         15     
+    1081            1                         15     
+    1082            1                         15     
+    1083            1                         15     
+    1084            1                         15     
+    1085            1                         15     
+    1086            1                         15     
+    1087            1                         15     
+    1091            1                          3     
+    1095            1                          3     
+    1096            1                          3     
+    1099            1                          3     
+    1103            1                          3     
+    1104            1                          3     
+    1105            1                          3     
+    1106            1                          3     
+    1107            1                          3     
+    1108            1                          3     
+    1109            1                          3     
+    1110            1                          3     
+    1111            1                          3     
+    1112            1                          3     
+    1113            1                          3     
+    1114            1                          3     
+    1118            1                          3     
+    1119            1                          3     
+    1122            1                          3     
+    1127            1                          3     
+    1128            1                          3     
+    1131            1                          3     
+    1132            1                          3     
+    1133            1                          3     
+    1136            1                          3     
+    1139            1                          3     
+    1140            1                         30     
+    1141            1                         30     
+    1144            1                          6     
+    1149            1                          3     
+    1152            1                          6     
+    1152            2                          6     
+    1154            1                          3     
+    1157            1                          3     
+    1158            1                          3     
+    1159            1                          3     
+    1162            1                          3     
+    1163            1                          3     
+    1166            1                          3     
+    1169            1                    ***0***     
+    1171            1                          3     
+    1175            1                          2     
+    1177            1                          1     
+    1180            1                          3     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        528       183       345    34.65%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\top#tb  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                     boundary_crossing_count[0-31]           0           0        0.00 
+                                  current_bresp[0]           0           0        0.00 
+                                  current_rresp[0]           0           0        0.00 
+                                   failed_tests[9]           0           2       50.00 
+                               failed_tests[10-31]           0           0        0.00 
+                                    okay_count[13]           0           2       50.00 
+                                 okay_count[14-31]           0           0        0.00 
+                                  passed_tests[13]           0           2       50.00 
+                               passed_tests[14-31]           0           0        0.00 
+                                    read_tests[12]           0           2       50.00 
+                                 read_tests[13-31]           0           0        0.00 
+                                  slverr_count[10]           0           2       50.00 
+                               slverr_count[11-31]           0           0        0.00 
+                                   total_tests[13]           0           2       50.00 
+                                total_tests[14-31]           0           0        0.00 
+                                   write_tests[12]           0           2       50.00 
+                                write_tests[13-31]           0           0        0.00 
+
+Total Node Count     =        264 
+Toggled Node Count   =         88 
+Untoggled Node Count =        176 
+
+Toggle Coverage      =      34.65% (183 of 528 bins)
+
+=================================================================================
+=== Instance: /\top#dut /mem_inst
+=== Design Unit: work.axi4_memory
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         7         6         1    85.71%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\top#dut /mem_inst
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi_memory.v
+------------------------------------IF Branch------------------------------------
+    24                                   1419444     Count coming in to IF
+    24              1                      15822     
+    26              1                     695958     
+                                          707664     All False Count
+Branch totals: 3 hits of 3 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    27                                    695958     Count coming in to IF
+    27              1                     314408     
+    29              1                     381550     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    38                                      2048     Count coming in to IF
+    38              1                       2048     
+                                         ***0***     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       1         0         1     0.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\top#dut /mem_inst --
+
+  File axi_memory.v
+----------------Focused Condition View-------------------
+Line       38 Item    1  (memory[j] === x)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+         Input Term   Covered  Reason for no coverage   Hint
+        -----------  --------  -----------------------  --------------
+  (memory[j] === x)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (memory[j] === x)_0   -                             
+  Row   2:          2  (memory[j] === x)_1   -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       9         9         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\top#dut /mem_inst --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi_memory.v
+    23              1                    1419444     
+    25              1                      15822     
+    28              1                     314408     
+    30              1                     381550     
+    36              1                          2     
+    37              1                          2     
+    37              2                       2048     
+    38              1                       2048     
+    39              1                          2     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        220       156        64    70.90%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\top#dut /mem_inst --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                           j[0-31]           0           0        0.00 
+
+Total Node Count     =        110 
+Toggled Node Count   =         78 
+Untoggled Node Count =         32 
+
+Toggle Coverage      =      70.90% (156 of 220 bins)
+
+=================================================================================
+=== Instance: /\top#dut /u_axi4_assertions
+=== Design Unit: work.axi4_assertions
+=================================================================================
+
+Assertion Coverage:
+    Assertions                      43        19        24    44.18%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\top#dut /u_axi4_assertions/assert_reset_valid_signals_low
+                     assertions.sv(154)                 2          2
+/\top#dut /u_axi4_assertions/assert_reset_ready_signals_defined
+                     assertions.sv(162)                 2          2
+/\top#dut /u_axi4_assertions/assert_awvalid_stable
+                     assertions.sv(174)                 0          0
+/\top#dut /u_axi4_assertions/assert_awaddr_stable
+                     assertions.sv(182)                 0          0
+/\top#dut /u_axi4_assertions/assert_awlen_stable
+                     assertions.sv(190)                 0          0
+/\top#dut /u_axi4_assertions/assert_awsize_stable
+                     assertions.sv(198)                 0          0
+/\top#dut /u_axi4_assertions/assert_awlen_limits
+                     assertions.sv(206)              2382          2
+/\top#dut /u_axi4_assertions/assert_awsize_valid
+                     assertions.sv(214)                 0          2
+/\top#dut /u_axi4_assertions/assert_wvalid_stable
+                     assertions.sv(226)                 0          2
+/\top#dut /u_axi4_assertions/assert_wdata_stable
+                     assertions.sv(234)                 0          2
+/\top#dut /u_axi4_assertions/assert_wlast_stable
+                     assertions.sv(242)                 0          2
+/\top#dut /u_axi4_assertions/assert_wlast_on_last_beat
+                     assertions.sv(251)                 0          2
+/\top#dut /u_axi4_assertions/assert_wlast_not_early
+                     assertions.sv(260)                 4          2
+/\top#dut /u_axi4_assertions/assert_write_data_follows_address
+                     assertions.sv(268)                 0          0
+/\top#dut /u_axi4_assertions/assert_bvalid_stable
+                     assertions.sv(280)                 0          2
+/\top#dut /u_axi4_assertions/assert_bresp_stable
+                     assertions.sv(288)                 0          2
+/\top#dut /u_axi4_assertions/assert_write_response_follows_data
+                     assertions.sv(296)                 0          0
+/\top#dut /u_axi4_assertions/assert_bresp_valid
+                     assertions.sv(304)                 0          2
+/\top#dut /u_axi4_assertions/assert_arvalid_stable
+                     assertions.sv(316)                 0          0
+/\top#dut /u_axi4_assertions/assert_araddr_stable
+                     assertions.sv(324)                 0          0
+/\top#dut /u_axi4_assertions/assert_arlen_stable
+                     assertions.sv(332)                 0          0
+/\top#dut /u_axi4_assertions/assert_arsize_stable
+                     assertions.sv(340)                 0          0
+/\top#dut /u_axi4_assertions/assert_arlen_limits
+                     assertions.sv(348)              2932          2
+/\top#dut /u_axi4_assertions/assert_arsize_valid
+                     assertions.sv(356)                 0          2
+/\top#dut /u_axi4_assertions/assert_rvalid_stable
+                     assertions.sv(368)                 0          2
+/\top#dut /u_axi4_assertions/assert_rdata_stable
+                     assertions.sv(376)            218626          2
+/\top#dut /u_axi4_assertions/assert_rresp_stable
+                     assertions.sv(384)                 0          2
+/\top#dut /u_axi4_assertions/assert_rlast_stable
+                     assertions.sv(392)                 0          2
+/\top#dut /u_axi4_assertions/assert_rlast_on_last_beat
+                     assertions.sv(401)                 0          2
+/\top#dut /u_axi4_assertions/assert_rlast_not_early
+                     assertions.sv(410)                 0          2
+/\top#dut /u_axi4_assertions/assert_read_data_follows_address
+                     assertions.sv(418)                 0          0
+/\top#dut /u_axi4_assertions/assert_rresp_valid
+                     assertions.sv(426)                 0          2
+/\top#dut /u_axi4_assertions/assert_write_addr_range_okay
+                     assertions.sv(443)                 0          0
+/\top#dut /u_axi4_assertions/assert_read_addr_range_okay
+                     assertions.sv(451)                 0          0
+/\top#dut /u_axi4_assertions/assert_write_4kb_boundary_error
+                     assertions.sv(460)                 0          0
+/\top#dut /u_axi4_assertions/assert_read_4kb_boundary_error
+                     assertions.sv(468)                 0          0
+/\top#dut /u_axi4_assertions/assert_write_addr_alignment
+                     assertions.sv(480)                 0          2
+/\top#dut /u_axi4_assertions/assert_read_addr_alignment
+                     assertions.sv(487)                 0          2
+/\top#dut /u_axi4_assertions/assert_write_beats_match_awlen
+                     assertions.sv(499)                 4          2
+/\top#dut /u_axi4_assertions/assert_read_beats_match_arlen
+                     assertions.sv(507)                 0          2
+/\top#dut /u_axi4_assertions/assert_awready_timeout
+                     assertions.sv(519)              2214          0
+/\top#dut /u_axi4_assertions/assert_wready_timeout
+                     assertions.sv(527)                 0          2
+/\top#dut /u_axi4_assertions/assert_arready_timeout
+                     assertions.sv(535)              2884          0
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        16        16         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\top#dut /u_axi4_assertions
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File assertions.sv
+------------------------------------IF Branch------------------------------------
+    81                                   1836300     Count coming in to IF
+    81              1                      23414     
+    91              1                    1812886     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    93                                   1812886     Count coming in to IF
+    93              1                       5654     
+                                         1807232     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    101                                  1812886     Count coming in to IF
+    101             1                     315422     
+                                         1497464     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    103                                   315422     Count coming in to IF
+    103             1                       5654     
+                                          309768     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    110                                  1812886     Count coming in to IF
+    110             1                       5014     
+                                         1807872     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    116                                  1812886     Count coming in to IF
+    116             1                       5058     
+                                         1807828     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    124                                  1812886     Count coming in to IF
+    124             1                     382600     
+                                         1430286     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    126                                   382600     Count coming in to IF
+    126             1                       5058     
+                                          377542     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      10         8         2    80.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\top#dut /u_axi4_assertions --
+
+  File assertions.sv
+----------------Focused Condition View-------------------
+Line       93 Item    1  (AWVALID && AWREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+     AWVALID         Y
+     AWREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          2  AWVALID_0             -                             
+  Row   2:          2  AWVALID_1             AWREADY                       
+  Row   3:    ***0***  AWREADY_0             AWVALID                       
+  Row   4:          2  AWREADY_1             AWVALID                       
+
+----------------Focused Condition View-------------------
+Line       101 Item    1  (WVALID && WREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       110 Item    1  (BVALID && BREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       116 Item    1  (ARVALID && ARREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+     ARVALID         Y
+     ARREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          2  ARVALID_0             -                             
+  Row   2:          2  ARVALID_1             ARREADY                       
+  Row   3:    ***0***  ARREADY_0             ARVALID                       
+  Row   4:          2  ARREADY_1             ARVALID                       
+
+----------------Focused Condition View-------------------
+Line       124 Item    1  (RVALID && RREADY)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                      4         2         2    50.00%
+
+================================Expression Details================================
+
+Expression Coverage for instance /\top#dut /u_axi4_assertions --
+
+  File assertions.sv
+----------------Focused Expression View-----------------
+Line       136 Item    1  (((AWADDR & 4095) + ((AWLEN + 1) << AWSIZE)) > 4095)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       137 Item    1  (((ARADDR & 4095) + ((ARLEN + 1) << ARSIZE)) > 4095)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       138 Item    1  (((AWADDR >> 2) + (AWLEN + 1)) <= 1024)
+Expression totals: 0 of 1 input term covered = 0.00%
+
+                               Input Term   Covered  Reason for no coverage   Hint
+                              -----------  --------  -----------------------  --------------
+  (((AWADDR >> 2) + (AWLEN + 1)) <= 1024)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                                 Non-masking condition(s)      
+ ---------  ---------  --------------------                       -------------------------     
+  Row   1:    ***0***  (((AWADDR >> 2) + (AWLEN + 1)) <= 1024)_0  -                             
+  Row   2:          2  (((AWADDR >> 2) + (AWLEN + 1)) <= 1024)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       139 Item    1  (((ARADDR >> 2) + (ARLEN + 1)) <= 1024)
+Expression totals: 0 of 1 input term covered = 0.00%
+
+                               Input Term   Covered  Reason for no coverage   Hint
+                              -----------  --------  -----------------------  --------------
+  (((ARADDR >> 2) + (ARLEN + 1)) <= 1024)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                                 Non-masking condition(s)      
+ ---------  ---------  --------------------                       -------------------------     
+  Row   1:    ***0***  (((ARADDR >> 2) + (ARLEN + 1)) <= 1024)_0  -                             
+  Row   2:          2  (((ARADDR >> 2) + (ARLEN + 1)) <= 1024)_1  -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      38        31         7    81.57%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\top#dut /u_axi4_assertions --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File assertions.sv
+    80              1                    1836300     
+    82              1                      23414     
+    83              1                      23414     
+    84              1                      23414     
+    85              1                      23414     
+    86              1                      23414     
+    87              1                      23414     
+    88              1                      23414     
+    89              1                      23414     
+    90              1                      23414     
+    94              1                       5654     
+    95              1                       5654     
+    96              1                       5654     
+    97              1                       5654     
+    102             1                     315422     
+    104             1                       5654     
+    105             1                       5654     
+    111             1                       5014     
+    112             1                       5014     
+    117             1                       5058     
+    118             1                       5058     
+    119             1                       5058     
+    120             1                       5058     
+    125             1                     382600     
+    127             1                       5058     
+    128             1                       5058     
+    135             1                      11628     
+    136             1                      11628     
+    137             1                      11628     
+    138             1                      11628     
+    139             1                      11628     
+    615             1                    ***0***     
+    616             1                    ***0***     
+    617             1                    ***0***     
+    618             1                    ***0***     
+    619             1                    ***0***     
+    620             1                    ***0***     
+    622             1                    ***0***     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        370       312        58    84.32%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\top#dut /u_axi4_assertions --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                       ARADDR[0-1]           0           0        0.00 
+                                     ARADDR[12-15]           0           0        0.00 
+                                      ARBURST[0-1]           0           0        0.00 
+                                         ARSIZE[0]           0           0        0.00 
+                                         ARSIZE[1]           0           2       50.00 
+                                         ARSIZE[2]           0           0        0.00 
+                                       AWADDR[0-1]           0           0        0.00 
+                                     AWADDR[12-15]           0           0        0.00 
+                                      AWBURST[0-1]           0           0        0.00 
+                                         AWSIZE[0]           0           0        0.00 
+                                         AWSIZE[1]           0           2       50.00 
+                                         AWSIZE[2]           0           0        0.00 
+                                          BRESP[0]           0           0        0.00 
+                                          RRESP[0]           0           0        0.00 
+                                        WSTRB[0-3]           0           0        0.00 
+                         read_addr_in_memory_range           0           0        0.00 
+                        write_addr_in_memory_range           0           0        0.00 
+
+Total Node Count     =        185 
+Toggled Node Count   =        155 
+Untoggled Node Count =         30 
+
+Toggle Coverage      =      84.32% (312 of 370 bins)
+
+=================================================================================
+=== Instance: /\top#dut 
+=== Design Unit: work.axi4
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        35        33         2    94.28%
+
+================================Branch Details================================
+
+Branch Coverage for instance /\top#dut 
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4.v
+------------------------------------IF Branch------------------------------------
+    104                                  2274014     Count coming in to IF
+    104             1                      27528     
+    137             1                    2246486     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    145                                  2246486     Count coming in to CASE
+    146             1                    1370020     
+    163             1                       5654     
+    169             1                     859514     
+    200             1                      11298     
+    208             1                    ***0***     
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    151                                  1370020     Count coming in to IF
+    151             1                       5654     
+                                         1364366     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    170                                   859514     Count coming in to IF
+    170             1                     315422     
+                                          544092     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    172                                   315422     Count coming in to IF
+    172             1                     314408     
+                                            1014     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    181                                   315422     Count coming in to IF
+    181             1                       5654     
+    192             1                     309768     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    186                                     5654     Count coming in to IF
+    186             1                         78     
+    188             1                       5576     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    201                                    11298     Count coming in to IF
+    201             1                       5014     
+                                            6284     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    214                                  2246486     Count coming in to CASE
+    215             1                     904986     
+    232             1                       5058     
+    241             1                    1336442     
+    277             1                    ***0***     
+Branch totals: 3 hits of 4 branches = 75.00%
+
+------------------------------------IF Branch------------------------------------
+    220                                   904986     Count coming in to IF
+    220             1                       5058     
+                                          899928     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    234                                     5058     Count coming in to IF
+    234             1                       4980     
+                                              78     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    243                                  1336442     Count coming in to IF
+    243             1                    1333318     
+    246             1                       3124     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    254                                  1336442     Count coming in to IF
+    254             1                     382600     
+                                          953842     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    257                                   382600     Count coming in to IF
+    257             1                     377542     
+    269             1                       5058     
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    263                                   377542     Count coming in to IF
+    263             1                     376570     
+                                             972     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                      23        13        10    56.52%
+
+================================Condition Details================================
+
+Condition Coverage for instance /\top#dut  --
+
+  File axi4.v
+----------------Focused Condition View-------------------
+Line       151 Item    1  (AWVALID && AWREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+     AWVALID         Y
+     AWREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          2  AWVALID_0             -                             
+  Row   2:          2  AWVALID_1             AWREADY                       
+  Row   3:    ***0***  AWREADY_0             AWVALID                       
+  Row   4:          2  AWREADY_1             AWVALID                       
+
+----------------Focused Condition View-------------------
+Line       170 Item    1  (WVALID && WREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+      WVALID         Y
+      WREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          2  WVALID_0              -                             
+  Row   2:          2  WVALID_1              WREADY                        
+  Row   3:    ***0***  WREADY_0              WVALID                        
+  Row   4:          2  WREADY_1              WVALID                        
+
+----------------Focused Condition View-------------------
+Line       172 Item    1  (write_addr_valid && ~write_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+      write_addr_valid         N  '_0' not hit             Hit '_0'
+  write_boundary_cross         Y
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:    ***0***  write_addr_valid_0      -                             
+  Row   2:          2  write_addr_valid_1      ~write_boundary_cross         
+  Row   3:          2  write_boundary_cross_0  write_addr_valid              
+  Row   4:          2  write_boundary_cross_1  write_addr_valid              
+
+----------------Focused Condition View-------------------
+Line       181 Item    1  (WLAST || (write_burst_cnt == 0))
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+              Input Term   Covered  Reason for no coverage   Hint
+             -----------  --------  -----------------------  --------------
+                   WLAST         Y
+  (write_burst_cnt == 0)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                Non-masking condition(s)      
+ ---------  ---------  --------------------      -------------------------     
+  Row   1:          2  WLAST_0                   ~(write_burst_cnt == 0)       
+  Row   2:          2  WLAST_1                   -                             
+  Row   3:          2  (write_burst_cnt == 0)_0  ~WLAST                        
+  Row   4:    ***0***  (write_burst_cnt == 0)_1  ~WLAST                        
+
+----------------Focused Condition View-------------------
+Line       186 Item    1  (~write_addr_valid || write_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+            Input Term   Covered  Reason for no coverage   Hint
+           -----------  --------  -----------------------  --------------
+      write_addr_valid         N  '_0' not hit             Hit '_0'
+  write_boundary_cross         Y
+
+     Rows:       Hits  FEC Target              Non-masking condition(s)      
+ ---------  ---------  --------------------    -------------------------     
+  Row   1:    ***0***  write_addr_valid_0      -                             
+  Row   2:          2  write_addr_valid_1      ~write_boundary_cross         
+  Row   3:          2  write_boundary_cross_0  write_addr_valid              
+  Row   4:          2  write_boundary_cross_1  write_addr_valid              
+
+----------------Focused Condition View-------------------
+Line       201 Item    1  (BREADY && BVALID)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+      BREADY         Y
+      BVALID         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          2  BREADY_0              -                             
+  Row   2:          2  BREADY_1              BVALID                        
+  Row   3:    ***0***  BVALID_0              BREADY                        
+  Row   4:          2  BVALID_1              BREADY                        
+
+----------------Focused Condition View-------------------
+Line       220 Item    1  (ARVALID && ARREADY)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+     ARVALID         Y
+     ARREADY         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          2  ARVALID_0             -                             
+  Row   2:          2  ARVALID_1             ARREADY                       
+  Row   3:    ***0***  ARREADY_0             ARVALID                       
+  Row   4:          2  ARREADY_1             ARVALID                       
+
+----------------Focused Condition View-------------------
+Line       234 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         N  '_0' not hit             Hit '_0'
+  read_boundary_cross         Y
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:    ***0***  read_addr_valid_0      -                             
+  Row   2:          2  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          2  read_boundary_cross_0  read_addr_valid               
+  Row   4:          2  read_boundary_cross_1  read_addr_valid               
+
+----------------Focused Condition View-------------------
+Line       243 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         N  '_0' not hit             Hit '_0'
+  read_boundary_cross         Y
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:    ***0***  read_addr_valid_0      -                             
+  Row   2:          2  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          2  read_boundary_cross_0  read_addr_valid               
+  Row   4:          2  read_boundary_cross_1  read_addr_valid               
+
+----------------Focused Condition View-------------------
+Line       254 Item    1  (RREADY && RVALID)
+Condition totals: 2 of 2 input terms covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       257 Item    1  (read_burst_cnt > 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Condition View-------------------
+Line       263 Item    1  (read_addr_valid && ~read_boundary_cross)
+Condition totals: 1 of 2 input terms covered = 50.00%
+
+           Input Term   Covered  Reason for no coverage   Hint
+          -----------  --------  -----------------------  --------------
+      read_addr_valid         N  '_0' not hit             Hit '_0'
+  read_boundary_cross         Y
+
+     Rows:       Hits  FEC Target             Non-masking condition(s)      
+ ---------  ---------  --------------------   -------------------------     
+  Row   1:    ***0***  read_addr_valid_0      -                             
+  Row   2:          2  read_addr_valid_1      ~read_boundary_cross          
+  Row   3:          2  read_boundary_cross_0  read_addr_valid               
+  Row   4:          2  read_boundary_cross_1  read_addr_valid               
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                      5         3         2    60.00%
+
+================================Expression Details================================
+
+Expression Coverage for instance /\top#dut  --
+
+  File axi4.v
+----------------Focused Expression View-----------------
+Line       66 Item    1  (((AWADDR & 4095) + ((write_burst_len + 1) << write_size)) > 4095)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       67 Item    1  (((ARADDR & 4095) + ((read_burst_len + 1) << read_size)) > 4095)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+----------------Focused Expression View-----------------
+Line       70 Item    1  ((write_addr >> 2) < 1024)
+Expression totals: 0 of 1 input term covered = 0.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+  ((write_addr >> 2) < 1024)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:    ***0***  ((write_addr >> 2) < 1024)_0  -                             
+  Row   2:          2  ((write_addr >> 2) < 1024)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       71 Item    1  ((read_addr >> 2) < 1024)
+Expression totals: 0 of 1 input term covered = 0.00%
+
+                 Input Term   Covered  Reason for no coverage   Hint
+                -----------  --------  -----------------------  --------------
+  ((read_addr >> 2) < 1024)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                   Non-masking condition(s)      
+ ---------  ---------  --------------------         -------------------------     
+  Row   1:    ***0***  ((read_addr >> 2) < 1024)_0  -                             
+  Row   2:          2  ((read_addr >> 2) < 1024)_1  -                             
+
+----------------Focused Expression View-----------------
+Line       252 Item    1  (read_burst_cnt == 0)
+Expression totals: 1 of 1 input term covered = 100.00%
+
+
+FSM Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    FSM States                       7         7         0   100.00%
+    FSM Transitions                 10         7         3    70.00%
+
+================================FSM Details================================
+
+FSM Coverage for instance /\top#dut  --
+
+FSM_ID: write_state
+    Current State Object : write_state
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+ 146              W_IDLE                   0
+ 163              W_ADDR                   1
+ 169              W_DATA                   2
+ 200              W_RESP                   3
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                  W_IDLE               32542          
+                  W_ADDR                5654          
+                  W_DATA                5654          
+                  W_RESP                5654          
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+ 159                   0                5654          W_IDLE -> W_ADDR              
+ 166                   1                5654          W_ADDR -> W_DATA              
+ 183                   3                5654          W_DATA -> W_RESP              
+ 204                   5                5654          W_RESP -> W_IDLE              
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+ 118                   2          W_ADDR -> W_IDLE    
+ 118                   4          W_DATA -> W_IDLE    
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   4         4         0   100.00%
+        FSM Transitions              6         4         2    66.66%
+FSM_ID: read_state
+    Current State Object : read_state
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+ 215              R_IDLE                   0
+ 232              R_ADDR                   1
+ 241              R_DATA                   2
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                  R_IDLE               27632          
+                  R_ADDR                5058          
+                  R_DATA                5058          
+    Covered Transitions :
+    ---------------------
+Line            Trans_ID           Hit_count          Transition          
+----            --------           ---------          ----------          
+ 228                   0                5058          R_IDLE -> R_ADDR              
+ 238                   1                5058          R_ADDR -> R_DATA              
+ 272                   3                5058          R_DATA -> R_IDLE              
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+ 119                   2          R_ADDR -> R_IDLE    
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   3         3         0   100.00%
+        FSM Transitions              4         3         1    75.00%
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      85        83         2    97.64%
+
+================================Statement Details================================
+
+Statement Coverage for instance /\top#dut  --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File axi4.v
+    62              1                      11312     
+    63              1                      10118     
+    66              1                      17880     
+    67              1                      15170     
+    70              1                     321070     
+    71              1                     387646     
+    103             1                    2274014     
+    106             1                      27528     
+    107             1                      27528     
+    108             1                      27528     
+    109             1                      27528     
+    111             1                      27528     
+    112             1                      27528     
+    113             1                      27528     
+    114             1                      27528     
+    115             1                      27528     
+    118             1                      27528     
+    119             1                      27528     
+    120             1                      27528     
+    121             1                      27528     
+    122             1                      27528     
+    123             1                      27528     
+    126             1                      27528     
+    127             1                      27528     
+    128             1                      27528     
+    129             1                      27528     
+    130             1                      27528     
+    131             1                      27528     
+    132             1                      27528     
+    133             1                      27528     
+    135             1                      27528     
+    139             1                    2246486     
+    140             1                    2246486     
+    147             1                    1370020     
+    148             1                    1370020     
+    149             1                    1370020     
+    153             1                       5654     
+    154             1                       5654     
+    155             1                       5654     
+    156             1                       5654     
+    158             1                       5654     
+    159             1                       5654     
+    165             1                       5654     
+    166             1                       5654     
+    174             1                     314408     
+    175             1                     314408     
+    176             1                     314408     
+    177             1                     314408     
+    182             1                       5654     
+    183             1                       5654     
+    187             1                         78     
+    189             1                       5576     
+    191             1                       5654     
+    194             1                     309768     
+    195             1                     309768     
+    202             1                       5014     
+    203             1                       5014     
+    204             1                       5014     
+    208             1                    ***0***     
+    216             1                     904986     
+    217             1                     904986     
+    218             1                     904986     
+    222             1                       5058     
+    223             1                       5058     
+    224             1                       5058     
+    225             1                       5058     
+    227             1                       5058     
+    228             1                       5058     
+    235             1                       4980     
+    236             1                       4980     
+    238             1                       5058     
+    244             1                    1333318     
+    245             1                    1333318     
+    247             1                       3124     
+    248             1                       3124     
+    251             1                    1336442     
+    252             1                    1336442     
+    255             1                     382600     
+    259             1                     377542     
+    260             1                     377542     
+    264             1                     376570     
+    265             1                     376570     
+    271             1                       5058     
+    272             1                       5058     
+    277             1                    ***0***     
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        712       514       198    72.19%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /\top#dut  --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                       ARADDR[0-1]           0           0        0.00 
+                                     ARADDR[12-15]           0           0        0.00 
+                                         ARSIZE[0]           0           0        0.00 
+                                         ARSIZE[1]           0           2       50.00 
+                                         ARSIZE[2]           0           0        0.00 
+                                       AWADDR[0-1]           0           0        0.00 
+                                     AWADDR[12-15]           0           0        0.00 
+                                         AWSIZE[0]           0           0        0.00 
+                                         AWSIZE[1]           0           2       50.00 
+                                         AWSIZE[2]           0           0        0.00 
+                                          BRESP[0]           0           0        0.00 
+                                          RRESP[0]           0           0        0.00 
+                               mem_rdata_reg[0-31]           0           0        0.00 
+                                    read_addr[0-1]           0           0        0.00 
+                                  read_addr[12-15]           0           0        0.00 
+                                 read_addr_incr[1]           0           0        0.00 
+                              read_addr_incr[3-15]           0           0        0.00 
+                                   read_addr_valid           0           0        0.00 
+                                      read_size[0]           0           0        0.00 
+                                      read_size[2]           0           0        0.00 
+                                     read_state[2]           0           0        0.00 
+                                   write_addr[0-1]           0           0        0.00 
+                                 write_addr[12-15]           0           0        0.00 
+                                write_addr_incr[1]           0           0        0.00 
+                             write_addr_incr[3-15]           0           0        0.00 
+                                  write_addr_valid           0           0        0.00 
+                                     write_size[0]           0           0        0.00 
+                                     write_size[2]           0           0        0.00 
+                                    write_state[2]           0           0        0.00 
+
+Total Node Count     =        356 
+Toggled Node Count   =        256 
+Untoggled Node Count =        100 
+
+Toggle Coverage      =      72.19% (514 of 712 bins)
+
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/\top#tb /generate_stimulus/immed__83
+                     Testbench.sv(83)                   0          3
+/\top#tb /run_directed_write_read_sequence/#anonblk#178847320#717#4#/#ublk#178847320#717/immed__719
+                     Testbench.sv(719)                  0          3
+/\top#dut /u_axi4_assertions/assert_reset_valid_signals_low
+                     assertions.sv(154)                 2          2
+/\top#dut /u_axi4_assertions/assert_reset_ready_signals_defined
+                     assertions.sv(162)                 2          2
+/\top#dut /u_axi4_assertions/assert_awvalid_stable
+                     assertions.sv(174)                 0          0
+/\top#dut /u_axi4_assertions/assert_awaddr_stable
+                     assertions.sv(182)                 0          0
+/\top#dut /u_axi4_assertions/assert_awlen_stable
+                     assertions.sv(190)                 0          0
+/\top#dut /u_axi4_assertions/assert_awsize_stable
+                     assertions.sv(198)                 0          0
+/\top#dut /u_axi4_assertions/assert_awlen_limits
+                     assertions.sv(206)              2382          2
+/\top#dut /u_axi4_assertions/assert_awsize_valid
+                     assertions.sv(214)                 0          2
+/\top#dut /u_axi4_assertions/assert_wvalid_stable
+                     assertions.sv(226)                 0          2
+/\top#dut /u_axi4_assertions/assert_wdata_stable
+                     assertions.sv(234)                 0          2
+/\top#dut /u_axi4_assertions/assert_wlast_stable
+                     assertions.sv(242)                 0          2
+/\top#dut /u_axi4_assertions/assert_wlast_on_last_beat
+                     assertions.sv(251)                 0          2
+/\top#dut /u_axi4_assertions/assert_wlast_not_early
+                     assertions.sv(260)                 4          2
+/\top#dut /u_axi4_assertions/assert_write_data_follows_address
+                     assertions.sv(268)                 0          0
+/\top#dut /u_axi4_assertions/assert_bvalid_stable
+                     assertions.sv(280)                 0          2
+/\top#dut /u_axi4_assertions/assert_bresp_stable
+                     assertions.sv(288)                 0          2
+/\top#dut /u_axi4_assertions/assert_write_response_follows_data
+                     assertions.sv(296)                 0          0
+/\top#dut /u_axi4_assertions/assert_bresp_valid
+                     assertions.sv(304)                 0          2
+/\top#dut /u_axi4_assertions/assert_arvalid_stable
+                     assertions.sv(316)                 0          0
+/\top#dut /u_axi4_assertions/assert_araddr_stable
+                     assertions.sv(324)                 0          0
+/\top#dut /u_axi4_assertions/assert_arlen_stable
+                     assertions.sv(332)                 0          0
+/\top#dut /u_axi4_assertions/assert_arsize_stable
+                     assertions.sv(340)                 0          0
+/\top#dut /u_axi4_assertions/assert_arlen_limits
+                     assertions.sv(348)              2932          2
+/\top#dut /u_axi4_assertions/assert_arsize_valid
+                     assertions.sv(356)                 0          2
+/\top#dut /u_axi4_assertions/assert_rvalid_stable
+                     assertions.sv(368)                 0          2
+/\top#dut /u_axi4_assertions/assert_rdata_stable
+                     assertions.sv(376)            218626          2
+/\top#dut /u_axi4_assertions/assert_rresp_stable
+                     assertions.sv(384)                 0          2
+/\top#dut /u_axi4_assertions/assert_rlast_stable
+                     assertions.sv(392)                 0          2
+/\top#dut /u_axi4_assertions/assert_rlast_on_last_beat
+                     assertions.sv(401)                 0          2
+/\top#dut /u_axi4_assertions/assert_rlast_not_early
+                     assertions.sv(410)                 0          2
+/\top#dut /u_axi4_assertions/assert_read_data_follows_address
+                     assertions.sv(418)                 0          0
+/\top#dut /u_axi4_assertions/assert_rresp_valid
+                     assertions.sv(426)                 0          2
+/\top#dut /u_axi4_assertions/assert_write_addr_range_okay
+                     assertions.sv(443)                 0          0
+/\top#dut /u_axi4_assertions/assert_read_addr_range_okay
+                     assertions.sv(451)                 0          0
+/\top#dut /u_axi4_assertions/assert_write_4kb_boundary_error
+                     assertions.sv(460)                 0          0
+/\top#dut /u_axi4_assertions/assert_read_4kb_boundary_error
+                     assertions.sv(468)                 0          0
+/\top#dut /u_axi4_assertions/assert_write_addr_alignment
+                     assertions.sv(480)                 0          2
+/\top#dut /u_axi4_assertions/assert_read_addr_alignment
+                     assertions.sv(487)                 0          2
+/\top#dut /u_axi4_assertions/assert_write_beats_match_awlen
+                     assertions.sv(499)                 4          2
+/\top#dut /u_axi4_assertions/assert_read_beats_match_arlen
+                     assertions.sv(507)                 0          2
+/\top#dut /u_axi4_assertions/assert_awready_timeout
+                     assertions.sv(519)              2214          0
+/\top#dut /u_axi4_assertions/assert_wready_timeout
+                     assertions.sv(527)                 0          2
+/\top#dut /u_axi4_assertions/assert_arready_timeout
+                     assertions.sv(535)              2884          0
+
+Total Coverage By Instance (filtered view): 71.43%
+
