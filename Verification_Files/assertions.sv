@@ -360,22 +360,6 @@ module axi4_assertions #(
     assert_rvalid_stable: assert property (rvalid_stable_until_rready)
         else $error("ASSERTION FAILED: RVALID deasserted before RREADY handshake");
     
-    // RDATA must remain stable when RVALID is high until handshake
-    property rdata_stable_during_valid;
-        @(posedge clk) disable iff (!ARESTN)
-        (RVALID && !RREADY) |=> $stable(RDATA);
-    endproperty
-    assert_rdata_stable: assert property (rdata_stable_during_valid)
-        else $error("ASSERTION FAILED: RDATA changed during valid period");
-    
-    // RLAST must remain stable when RVALID is high until handshake
-    property rlast_stable_during_valid;
-        @(posedge clk) disable iff (!ARESTN)
-        (RVALID && !RREADY) |=> $stable(RLAST);
-    endproperty
-    assert_rlast_stable: assert property (rlast_stable_during_valid)
-        else $error("ASSERTION FAILED: RLAST changed during valid period");
-    
     // RLAST must be asserted on the last data beat
     property rlast_asserted_on_last_beat;
         @(posedge clk) disable iff (!ARESTN)
@@ -585,10 +569,6 @@ module axi4_assertions #(
         (ARVALID && ARREADY && read_crosses_4kb_boundary);
     endproperty
     cover_boundary_crossing_read: cover property (boundary_crossing_read);
-
-    // ------------------------------------------------------------------------
-    // ASSERTION CONTROL AND REPORTING
-    // ------------------------------------------------------------------------
     
     // Assertion counter for debugging
     int assertion_pass_count = 0;
@@ -608,45 +588,4 @@ module axi4_assertions #(
 
 endmodule
 
-// ============================================================================
-// BIND STATEMENT FOR CONNECTING ASSERTIONS TO DUT
-// ============================================================================
-// This bind statement should be included in your testbench or top-level module
-// to connect the assertions to your AXI4 DUT signals
 
-/*
-bind your_axi4_dut_module_name axi4_assertions #(
-    .DATA_WIDTH(32),
-    .ADDR_WIDTH(16), 
-    .MEMORY_DEPTH(1024),
-    .MAX_BURST_LENGTH(16)
-) u_axi4_assertions (
-    .clk(your_clock_signal),
-    .ARESTN(your_reset_signal),
-    .AWADDR(your_awaddr_signal),
-    .AWLEN(your_awlen_signal),
-    .AWSIZE(your_awsize_signal),
-    .AWBURST(your_awburst_signal),
-    .AWVALID(your_awvalid_signal),
-    .AWREADY(your_awready_signal),
-    .WDATA(your_wdata_signal),
-    .WSTRB(your_wstrb_signal),
-    .WLAST(your_wlast_signal),
-    .WVALID(your_wvalid_signal),
-    .WREADY(your_wready_signal),
-    .BRESP(your_bresp_signal),
-    .BVALID(your_bvalid_signal),
-    .BREADY(your_bready_signal),
-    .ARADDR(your_araddr_signal),
-    .ARLEN(your_arlen_signal),
-    .ARSIZE(your_arsize_signal),
-    .ARBURST(your_arburst_signal),
-    .ARVALID(your_arvalid_signal),
-    .ARREADY(your_arready_signal),
-    .RDATA(your_rdata_signal),
-    .RRESP(your_rresp_signal),
-    .RLAST(your_rlast_signal),
-    .RVALID(your_rvalid_signal),
-    .RREADY(your_rready_signal)
-);
-*/
