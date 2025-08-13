@@ -1,4 +1,4 @@
-# AXI4-Compliant Memory-Mapped Slave Verification Framework
+# AXI4-Compliant Memory-Mapped Slave Verification
 
 ## 📋 Table of Contents
 - [Overview](#overview)
