@@ -1,439 +1,441 @@
 # AXI4-Compliant Memory-Mapped Slave Verification
 
-## Project Overview
+A comprehensive SystemVerilog-based verification environment for validating AXI4-compliant memory-mapped slave devices. This project implements a complete testbench with constrained random testing, assertion-based verification, functional coverage, and protocol compliance checking.
 
-This repository contains a comprehensive functional verification environment for an AXI4-compliant memory-mapped slave design. The verification environment is built using SystemVerilog and OOP principles, providing robust testing capabilities to ensure protocol compliance and functional correctness.
+## 📋 Table of Contents
 
-## Table of Contents
-
-- [Architecture Overview](#architecture-overview)
+- [Overview](#overview)
+- [Architecture](#architecture)
 - [File Structure](#file-structure)
-- [Verification Environment](#verification-environment)
 - [Key Features](#key-features)
+- [Verification Components](#verification-components)
+- [Coverage Strategy](#coverage-strategy)
 - [Getting Started](#getting-started)
-- [Running Simulations](#running-simulations)
-- [Verification Strategy](#verification-strategy)
-- [Coverage Analysis](#coverage-analysis)
-- [Assertions](#assertions)
+- [Test Execution](#test-execution)
 - [Results and Reports](#results-and-reports)
-- [Contributing](#contributing)
+- [Advanced Features](#advanced-features)
 
-## Architecture Overview
+## 🎯 Overview
 
-The verification environment implements a layered testbench architecture that follows industry-standard verification methodologies:
+This verification environment is designed to thoroughly validate AXI4 memory-mapped slave implementations through:
+
+- **Protocol Compliance**: Comprehensive assertion-based verification ensuring strict AXI4 protocol adherence
+- **Functional Coverage**: Multi-dimensional coverage tracking for complete feature verification
+- **Constrained Random Testing**: Intelligent stimulus generation targeting corner cases and boundary conditions
+- **Golden Model**: Reference implementation for result comparison and validation
+- **Performance Analysis**: Handshaking patterns and timing verification
+
+### Target Design Under Test (DUT)
+- **Protocol**: AXI4 Memory-Mapped Slave Interface
+- **Data Width**: Configurable (default: 32-bit)
+- **Address Width**: Configurable (default: 16-bit)  
+- **Memory Depth**: Configurable (default: 1024 entries)
+- **Burst Support**: Up to 16 beats per transaction
+
+## 🏗️ Architecture
 
 ```
-┌────────────────────┐    ┌─────────────────┐
-│ Transaction Layer  │    │   Assertions    │
-├────────────────────┤    ├─────────────────┤
-│  Transaction.sv    │    │  assertions.sv  │
-└────────────────────┘    └─────────────────┘
-         │                       │
-┌─────────────────┐    ┌─────────────────┐
-│ Test Layer      │    │   Interface     │
-│                 │    │     Layer       │
-├─────────────────┤    ├─────────────────┤
-│ Testbench.sv    │    │    intf.sv      │
-└─────────────────┘    └─────────────────┘
-         │                       │
-         └───────┬───────────────┘
-                 │
-    ┌─────────────────┐
-    │      DUT        │
-    ├─────────────────┤
-    │    top.sv       │
-    └─────────────────┘
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Testbench     │────│   AXI Interface  │────│      DUT        │
+│   (Testbench.sv)│    │    (intf.sv)     │    │   (axi4.sv)     │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                        │                       │
+         │                        │                       │
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│  Transaction    │    │   Assertions     │    │ Golden Memory   │
+│(enhanced_       │    │(assertions.sv)   │    │    Model        │
+│Transaction.sv)  │    │                  │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
 ```
 
-## File Structure
+## 📁 File Structure
 
 ### Core Verification Files
 
-| File | Description |
-|------|-------------|
-| `top.sv` | **Top-level testbench module** - Instantiates DUT, interface, and verification components |
-| `intf.sv` | **AXI4 Interface Definition** - Contains all AXI4 signal declarations and modports |
-| `pkg.sv` | **Verification Package** - Houses all verification classes, parameters, and utilities |
-| `Testbench.sv` | **Main Testbench Class** - Orchestrates the verification environment and test execution |
-| `enhanced_Transaction.sv` | **Transaction Class** - Defines AXI4 transaction objects with constraints and methods |
-| `assertions.sv` | **SystemVerilog Assertions** - Protocol compliance and functional property checks |
-| `run.do` | **Simulation Script** - ModelSim/QuestaSim automation script for compilation and simulation |
+| File | Description | Key Components |
+|------|-------------|----------------|
+| **`top.sv`** | Top-level test harness | Clock generation, DUT instantiation, interface binding |
+| **`intf.sv`** | AXI4 interface definition | Signal declarations, clocking block, modports |
+| **`pkg.sv`** | Package with enumerations | AXI4 response types, burst types, test modes |
+| **`Testbench.sv`** | Main testbench module | Test orchestration, stimulus generation, checking |
+| **`enhanced_Transaction.sv`** | Transaction class | Randomization constraints, coverage groups |
+| **`assertions.sv`** | SystemVerilog assertions | Protocol compliance, timing checks |
+| **`run.do`** | ModelSim simulation script | Compilation, optimization, coverage collection |
 
-## Verification Environment
+## ✨ Key Features
 
-### Interface Layer (`intf.sv`)
-The interface layer provides a clean abstraction between the testbench and DUT, featuring:
+### 🔄 Transaction Generation
+- **Constrained Random**: Intelligent constraint-based stimulus generation
+- **Corner Case Targeting**: Automatic detection and generation of boundary conditions
+- **Handshaking Variations**: Configurable VALID/READY timing patterns
+- **Burst Length Control**: Single beat to 16-beat burst support
 
-- **Complete AXI4 Signal Set**: All required AXI4-MM signals including address, data, control, and response channels
-- **Clocking Blocks**: Synchronous signal handling with proper setup/hold timing
-- **Modports**: Separate views for master, slave, and monitor perspectives
-- **Signal Bundling**: Logical grouping of related AXI4 signals for easier manipulation
+### 🎯 Coverage-Driven Verification
+- **9 Comprehensive Coverage Groups**: FSM states, boundaries, bursts, responses, memory addressing
+- **Cross Coverage**: Multi-dimensional coverage combinations
+- **Adaptive Testing**: Dynamic test generation based on coverage holes
+- **100% Coverage Target**: Systematic coverage closure methodology
 
-Key Interface Features:
+### ⚡ Protocol Compliance
+- **60+ Assertions**: Complete AXI4 protocol rule enforcement
+- **Handshaking Verification**: VALID/READY protocol compliance
+- **Burst Integrity**: AWLEN/ARLEN vs actual beat count validation
+- **Response Checking**: BRESP/RRESP correctness verification
+
+## 🧩 Verification Components
+
+### Transaction Class (`enhanced_Transaction.sv`)
+
+The heart of the verification environment, featuring:
+
 ```systemverilog
-// Write Address Channel
-logic [31:0] AWADDR
-logic [7:0]  AWLEN
-logic [2:0]  AWSIZE
-logic [1:0]  AWBURST
-logic        AWVALID
-logic        AWREADY
-
-// Write Data Channel
-logic [31:0] WDATA
-logic [3:0]  WSTRB
-logic        WLAST
-logic        WVALID
-logic        WREADY
-
-// Write Response Channel
-logic [1:0]  BRESP
-logic        BVALID
-logic        BREADY
-
-// Read Address Channel
-logic [31:0] ARADDR
-logic [7:0]  ARLEN
-logic [2:0]  ARSIZE
-logic [1:0]  ARBURST
-logic        ARVALID
-logic        ARREADY
-
-// Read Data Channel
-logic [31:0] RDATA
-logic [1:0]  RRESP
-logic        RLAST
-logic        RVALID
-logic        RREADY
+class Transaction #(parameter int DATA_WIDTH = 32, parameter int ADDR_WIDTH = 16);
+    // Core transaction fields
+    rand operation_type_e op_type;           // READ_OP or WRITE_OP
+    rand logic [ADDR_WIDTH-1:0] ADDR;        // Transaction address
+    rand logic [7:0] LEN;                    // Burst length (0-255)
+    rand logic [DATA_WIDTH-1:0] WDATA[];     // Write data array
+    
+    // Advanced control fields
+    rand int awvalid_delay;                  // Address valid timing
+    rand int wvalid_delay[];                 // Per-beat data timing
+    rand bit bready_value;                   // Response ready control
+    rand test_mode_e test_mode;              // Test scenario selection
 ```
 
-### Transaction Layer (`enhanced_Transaction.sv`)
-Implements sophisticated transaction modeling with:
+#### Coverage Groups (9 Comprehensive Groups)
+1. **FSM States Coverage**: Write/Read state machine transitions
+2. **Boundary Conditions**: 4KB boundary crossing scenarios
+3. **Burst Coverage**: Length and size combinations
+4. **Response Coverage**: OKAY/SLVERR response patterns
+5. **Memory Address Coverage**: Full address space coverage
+6. **Handshaking Coverage**: VALID/READY timing patterns
+7. **Error Conditions**: Protocol violation scenarios
+8. **Data Patterns**: Various data pattern coverage
+9. **Test Mode Coverage**: Different test scenario coverage
 
-- **Randomization Constraints**: Ensures realistic and protocol-compliant stimulus generation
-- **Transaction Types**: Support for various AXI4 operations (single/burst read/write)
-- **Error Injection**: Controllable error scenarios for robust verification
-- **Timing Control**: Configurable delays and timing relationships
+### Testbench Architecture (`Testbench.sv`)
 
-Transaction Class Features:
-- **Smart Randomization**: Weighted distributions for realistic traffic patterns
-- **Address Alignment**: Automatic address alignment based on transfer size
-- **Response Modeling**: Comprehensive error response generation
+Multi-phase verification approach:
 
-### Testbench Layer (`Testbench.sv`)
-The main verification engine providing:
+```systemverilog
+// Phase 1: Random Testing (10 tests)
+repeat(10) execute_test();
 
-- **Driver Components**: Generate stimulus and drive AXI4 transactions
-- **Monitor Components**: Observe and collect transaction data
-- **Scoreboard**: Compare expected vs. actual behavior
-- **Coverage Collection**: Functional and code coverage tracking
-- **Test Orchestration**: Coordinate test execution phases
+// Phase 2: Directed Sequences
+run_directed_write_read_sequence();
 
-### Package Layer (`pkg.sv`)
-Central repository containing:
+// Phase 3: Single Beat Testing
+run_single_beat_tests();
 
-- **Parameter Definitions**: Configurable testbench parameters
-- **Type Definitions**: Custom data types and enumerations  
-- **Utility Functions**: Common verification utilities and helper functions
-- **Coverage Definitions**: Covergroups and coverage points
-- **Test Configuration**: Test-specific parameters and settings
+// Phase 4: Coverage-Driven Testing
+run_coverage_driven_tests(); // Up to 200 tests for 100% coverage
+```
 
-## Key Features
+#### Key Testbench Features
+- **Golden Memory Model**: Reference model for data integrity verification
+- **Comprehensive Checking**: Response validation, data integrity, protocol compliance
+- **Statistics Tracking**: Pass/fail rates, response type distribution
+- **Debug Support**: Configurable debug messaging system
 
-### 🎯 Comprehensive AXI4 Protocol Support
-- **Full AXI4-MM Implementation**: Complete support for all AXI4 memory-mapped features
-- **Burst Transfer Support**: INCR, WRAP, and FIXED burst types with configurable lengths
-- **Multiple Outstanding Transactions**: Support for concurrent read/write operations
-- **Size and Alignment Handling**: Proper byte enable and address alignment validation
+### AXI4 Interface (`intf.sv`)
 
-### 🔧 Advanced Verification Capabilities
-- **Constrained Random Stimulus**: Intelligent test generation with configurable constraints
-- **Protocol Compliance Checking**: Comprehensive assertion-based verification
-- **Functional Coverage**: Detailed coverage model tracking feature utilization
-- **Error Injection and Recovery**: Systematic testing of error conditions and responses
+Complete AXI4 signal interface with:
+- **Write Address Channel**: AWADDR, AWLEN, AWSIZE, AWVALID/AWREADY
+- **Write Data Channel**: WDATA, WLAST, WVALID/WREADY  
+- **Write Response Channel**: BRESP, BVALID/BREADY
+- **Read Address Channel**: ARADDR, ARLEN, ARSIZE, ARVALID/ARREADY
+- **Read Data Channel**: RDATA, RRESP, RLAST, RVALID/RREADY
 
-### 📊 Monitoring and Analysis
-- **Transaction-Level Monitoring**: Complete visibility into AXI4 transaction flow
-- **Performance Analysis**: Bandwidth and latency measurement capabilities
-- **Comprehensive Logging**: Detailed transaction and event logging
-- **Waveform Integration**: Full signal visibility for debug and analysis
+### Assertion Suite (`assertions.sv`)
 
-## Getting Started
+Comprehensive protocol verification:
+
+#### Categories of Assertions
+- **Reset Behavior**: Signal states during reset conditions
+- **Channel Stability**: Signal stability during valid periods
+- **Handshaking Rules**: VALID/READY protocol compliance
+- **Burst Integrity**: AWLEN/ARLEN consistency with actual beats
+- **Response Validation**: Correct BRESP/RRESP generation
+- **Boundary Checks**: 4KB boundary crossing detection
+- **Timeout Prevention**: Livelock avoidance assertions
+
+## 📊 Coverage Strategy
+
+### Coverage Metrics Tracking
+
+The verification environment tracks multiple coverage dimensions:
+
+| Coverage Type | Target | Key Metrics |
+|---------------|--------|-------------|
+| **FSM Coverage** | 100% | All state transitions covered |
+| **Boundary Coverage** | 100% | 4KB boundary cross/no-cross scenarios |
+| **Burst Coverage** | 100% | All burst lengths (1-16 beats) |
+| **Address Coverage** | 100% | Low/mid/high address ranges |
+| **Response Coverage** | 100% | OKAY/SLVERR for valid/invalid scenarios |
+| **Handshaking Coverage** | 100% | All VALID/READY timing combinations |
+
+### Adaptive Coverage Closure
+
+The testbench employs intelligent coverage-driven testing:
+
+```systemverilog
+// Focused constraint methods for coverage holes
+task constraint_memory_address_coverage();
+task constraint_error_conditions_coverage();
+task constraint_data_patterns_coverage();
+```
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- **ModelSim/QuestaSim**: Version 10.7 or later recommended
-- **SystemVerilog Support**: IEEE 1800-2017 compliance required
-- **Memory Requirements**: Minimum 8GB RAM for complex simulations
+- **ModelSim**: Mentor Graphics simulation tool
+- **SystemVerilog Support**: IEEE 1800-2012 or later
+- **Coverage Support**: Functional coverage collection capability
 
 ### Quick Setup
-1. **Clone the Repository**:
+
+1. **Clone Repository**
    ```bash
    git clone https://github.com/Hussein-18021/AXI4-Compliant-Memory-Mapped-Slave-Verification.git
    cd AXI4-Compliant-Memory-Mapped-Slave-Verification
    ```
 
-2. **Environment Setup**:
-   ```bash
-   # Ensure ModelSim/QuestaSim is in PATH
-   export PATH=$PATH:/path/to/modelsim/bin
+2. **Verify File Structure**
+   ```
+   Verification_Files/
+   ├── top.sv
+   ├── intf.sv
+   ├── pkg.sv
+   ├── Testbench.sv
+   ├── enhanced_Transaction.sv
+   ├── assertions.sv
+   └── run.do
    
-   # Set up library paths if needed
-   export MODEL_TECH=/path/to/modelsim/modeltech
+   Design_Files/
+   ├── axi4.v
+   └── axi_memory.v
    ```
 
-## Running Simulations
+3. **Run Simulation**
+   ```bash
+   cd Verification_Files
+   vsim -do run.do
+   ```
 
-### Using the Automation Script (`run.do`)
-The primary method for running simulations:
+## 🎮 Test Execution
 
-```bash
-# Basic simulation run
-vsim -do run.do
+### Simulation Script (`run.do`)
 
-# Run with GUI for debugging
-vsim -gui -do run.do
+The automated simulation flow:
 
-# Batch mode execution
-vsim -c -do "do run.do; quit -f"
+```tcl
+# Compilation with coverage
+vlog intf.sv pkg.sv enhanced_Transaction.sv Testbench.sv ../Design_Files/axi_memory.v ../Design_Files/axi4.v top.sv +cover -covercells
+
+# Optimization
+vopt top -o opt +acc
+
+# Simulation with coverage collection
+vsim -c opt -do "add wave -radix hex /top/dut/*; coverage save -onexit cov.ucdb; run -all; coverage report -details -output cov_report.txt" -cover
 ```
 
-### Manual Compilation and Simulation
-For custom simulation flows:
+### Test Parameters
 
-```bash
-# Compilation phase
-vlog -sv pkg.sv
-vlog -sv intf.sv  
-vlog -sv enhanced_Transaction.sv
-vlog -sv Testbench.sv
-vlog -sv assertions.sv
-vlog -sv top.sv
+Key simulation parameters (configurable in `Testbench.sv`):
 
-# Simulation execution
-vsim -voptargs=+acc top
-run -all
+```systemverilog
+parameter int NUM_RANDOM_TESTS = 50;        // Initial random test count
+parameter int NUM_DIRECTED_TESTS = 100;     // Directed test count  
+parameter real TARGET_COVERAGE = 100.0;     // Coverage target
+parameter bit DebugEn = 0;                  // Debug message control
 ```
 
-### Simulation Configuration
-Key parameters can be configured via:
+### Test Phases
 
-- **Test Selection**: Choose specific test scenarios
-- **Random Seed Control**: Reproducible random stimulus
-- **Coverage Control**: Enable/disable coverage collection  
-- **Debug Level**: Control verbosity of simulation output
-- **Timeout Settings**: Configure maximum simulation time
+1. **Phase 1: Random Testing**
+   - 10 completely random transactions
+   - Basic functionality verification
+   - Initial coverage seeding
 
-## Verification Strategy
+2. **Phase 2: Directed Testing**  
+   - Write-read sequences
+   - Address-data correlation verification
+   - Functional correctness validation
 
-### 1. **Directed Testing**
-- **Basic Functionality**: Single read/write operations with various sizes
-- **Burst Operations**: Different burst types and lengths
-- **Address Boundary Testing**: Alignment and 4KB boundary crossing
-- **Error Scenarios**: SLVERR, DECERR response testing
+3. **Phase 3: Single Beat Testing**
+   - Simple transactions across address space
+   - Data pattern verification
+   - Basic protocol compliance
 
-### 2. **Constrained Random Testing**  
-- **Transaction Randomization**: Address, data, size, and burst randomization
-- **Timing Randomization**: Variable delays and ready signal timing
-- **Mixed Traffic Patterns**: Concurrent read/write operations
-- **Stress Testing**: High-frequency transaction generation
+4. **Phase 4: Coverage-Driven Testing**
+   - Up to 200 adaptive tests
+   - Targets specific coverage holes
+   - Achieves 100% coverage target
 
-### 3. **Protocol Compliance Verification**
-- **Handshake Verification**: Valid/ready signal relationships
-- **Timing Requirements**: Setup/hold and response timing checks  
-- **Data Integrity**: Write-read data comparison and verification
-- **State Machine Validation**: Proper state transitions and responses
+## 📈 Results and Reports
 
-### 4. **Corner Case Testing**
-- **Minimum/Maximum Values**: Extreme parameter value testing
-- **Reset Scenarios**: Reset during active transactions
-- **Back-to-Back Operations**: Consecutive transaction handling
-- **Resource Limitations**: Buffer overflow and underflow scenarios
+### Test Results Format
 
-## Coverage Analysis
-
-### Functional Coverage
-Comprehensive coverage model including:
-
-- **Address Coverage**: Full address space utilization tracking
-- **Size Coverage**: All supported transfer sizes (1, 2, 4, 8, 16+ bytes)
-- **Burst Coverage**: All burst types and length combinations
-- **Transaction Coverage**: Read/write operation distributions
-- **Cross Coverage**: Address-size-burst interactions
-
-### Code Coverage
-- **Line Coverage**: Statement execution tracking
-- **Branch Coverage**: Conditional path verification  
-- **Toggle Coverage**: Signal activity monitoring
-- **Expression Coverage**: Boolean expression evaluation
-
-### Coverage Goals
-- **Functional Coverage Target**: ≥95% for all defined coverpoints
-- **Code Coverage Target**: ≥98% line coverage, ≥95% branch coverage
-- **Assertion Coverage**: 100% assertion pass rate
-
-## Assertions (`assertions.sv`)
-
-### Protocol Assertions
-Comprehensive SystemVerilog Assertions (SVA) covering:
-
-#### Write Channel Assertions
-- **Address Channel**: `AWVALID` stability until `AWREADY`
-- **Data Channel**: `WVALID`/`WDATA` relationship and `WLAST` timing
-- **Response Channel**: `BRESP` validity and `BVALID`/`BREADY` handshake
-
-#### Read Channel Assertions
-- **Address Channel**: `ARVALID`/`ARADDR` stability requirements
-- **Data Channel**: `RVALID`/`RDATA` timing and `RLAST` correctness
-- **Response Timing**: Appropriate response delays and ordering
-
-#### Cross-Channel Assertions
-- **Outstanding Transaction Limits**: Maximum concurrent transaction tracking
-- **Address Alignment**: Size-based address alignment verification
-- **4KB Boundary**: Burst boundary crossing prevention
-- **Reset Behavior**: Proper reset response and state clearing
-
-### Custom Assertions
-Project-specific assertions for:
-- **Memory Coherency**: Read-after-write data consistency
-- **Performance Constraints**: Maximum response time verification
-- **Power Management**: Clock gating and power state transitions
-- **Configuration Compliance**: Register access and configuration validation
-
-## Results and Reports
-
-### Simulation Reports
-Automated generation of:
-
-- **Test Summary Reports**: Pass/fail status and statistics
-- **Coverage Reports**: Detailed coverage analysis with gap identification  
-- **Performance Reports**: Transaction throughput and latency analysis
-- **Assertion Reports**: Protocol compliance verification results
-
-### Debug Information
-Comprehensive logging including:
-
-- **Transaction Logs**: Detailed transaction-level information
-- **Timing Analysis**: Setup/hold and response time measurements
-- **Error Reports**: Detailed error condition analysis
-- **Waveform Dumps**: Complete signal visibility for debug
-
-### Report Locations
 ```
-reports/
-├── coverage/
-│   ├── functional_coverage.html
-│   ├── code_coverage.html
-│   └── coverage_summary.txt
-├── simulation/
-│   ├── test_results.log
-│   ├── assertion_report.txt
-│   └── performance_analysis.txt
-└── debug/
-    ├── transaction.log
-    ├── waveform.wlf
-    └── debug_info.txt
+======================================================
+Test #X Result (WRITE_OP/READ_OP)
+  Actual   : AWADDR=0xAAA AWLEN=N AWSIZE=S BRESP=RESP
+  Expected : AWADDR=0xAAA AWLEN=N AWSIZE=S BRESP=RESP  
+  TEST PASS/FAIL
+======================================================
 ```
 
-## Advanced Features
+### Final Statistics
 
-### Configuration Management
-- **Parameterizable DUT**: Configurable address width, data width, and ID width
-- **Test Configuration**: YAML/JSON-based test parameter management
-- **Environment Scaling**: Support for multiple AXI4 interfaces
-
-### Integration Capabilities  
-- **UVM Compatibility**: Structured for easy UVM integration
-- **Continuous Integration**: Jenkins/GitHub Actions integration support  
-- **Regression Testing**: Automated nightly regression capabilities
-- **Metric Tracking**: Historical performance and coverage tracking
-
-## Troubleshooting
-
-### Common Issues and Solutions
-
-#### Simulation Startup Issues
-```bash
-# Issue: Compilation errors
-# Solution: Check SystemVerilog version compatibility
-vlog -sv +define+SV_VERSION_CHECK pkg.sv
-
-# Issue: Interface connection problems  
-# Solution: Verify modport usage and signal connections
+```
+======================================================
+                FINAL TEST REPORT                    
+======================================================
+Total Tests:    XXX
+Read Tests:     XXX  
+Write Tests:    XXX
+Passed Tests:   XXX
+Failed Tests:   XXX
+Pass Rate:      XX.X%
+------------------------------------------------------
+OKAY Responses: XXX
+SLVERR Count:   XXX
+======================================================
 ```
 
-#### Coverage Issues
-```bash
-# Issue: Low functional coverage
-# Solution: Increase random test iterations or add directed tests
+### Coverage Report
 
-# Issue: Missing code coverage
-# Solution: Review unreachable code and add appropriate stimuli
+```
+=== COMPREHENSIVE COVERAGE REPORT ===
+FSM States Coverage:      100.0%
+Boundary Conditions:      100.0%
+Burst Coverage:           100.0%
+Response Coverage:        100.0%
+Memory Address Coverage:  100.0%
+Handshaking Coverage:     100.0%
+Error Conditions:         100.0%
+Data Patterns:            100.0%
+Test Mode Coverage:       100.0%
+-------------------------------------
+Overall Coverage:         100.0%
+=====================================
 ```
 
-#### Performance Issues
-```bash
-# Issue: Slow simulation
-# Solution: Optimize random constraints and reduce debug verbosity
+## ⚙️ Advanced Features
 
-# Issue: Memory usage
-# Solution: Limit waveform recording or use checkpoint/restore
+### Error Injection and Boundary Testing
+
+The verification environment includes sophisticated error injection:
+
+- **4KB Boundary Crossing**: Automatic detection and testing of AXI4 4KB boundary rule
+- **Memory Range Violations**: Out-of-bounds address testing
+- **Protocol Violations**: Invalid handshaking sequence testing
+- **Timeout Scenarios**: Deadlock prevention validation
+
+### Handshaking Pattern Testing
+
+Advanced VALID/READY pattern generation:
+
+```systemverilog
+// Write channel handshaking control
+rand int awvalid_delay;                    // Address valid delay
+rand int wvalid_delay[];                   // Per-beat data delays  
+rand bit awvalid_value;                    // Valid assertion control
+rand bit bready_value;                     // Ready assertion control
+
+// Read channel handshaking control  
+rand int arvalid_delay;                    // Address valid delay
+rand int rready_delay[];                   // Per-beat ready delays
+rand bit rready_random_deassert[];         // Backpressure patterns
+rand int rready_backpressure_prob;         // Backpressure probability
 ```
 
-## Contributing
+### Data Pattern Testing
 
-We welcome contributions to improve the verification environment:
+Comprehensive data pattern coverage:
 
-### Contribution Guidelines
-1. **Fork the Repository**: Create your feature branch
-2. **Code Standards**: Follow SystemVerilog coding standards
-3. **Testing**: Ensure all tests pass before submission  
-4. **Documentation**: Update documentation for new features
-5. **Review Process**: Submit pull requests for review
-
-### Development Setup
-```bash
-# Development environment setup
-git clone https://github.com/Hussein-18021/AXI4-Compliant-Memory-Mapped-Slave-Verification.git
-cd AXI4-Compliant-Memory-Mapped-Slave-Verification
-
-# Create development branch
-git checkout -b feature/new-verification-feature
-
-# Make changes and test
-vsim -do run.do
-
-# Submit changes
-git push origin feature/new-verification-feature
+```systemverilog
+typedef enum {
+    RANDOM_DATA,      // Pseudo-random data patterns
+    ALL_ZEROS,        // 0x00000000 patterns
+    ALL_ONES,         // 0xFFFFFFFF patterns  
+    ALTERNATING_AA,   // 0xAAAAAAAA patterns
+    ALTERNATING_55    // 0x55555555 patterns
+} data_pattern_e;
 ```
 
-## License
+### Corner Case Detection
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Automatic corner case identification and testing:
 
-## Acknowledgments
+- **Burst Length Corners**: Single beat, maximum burst length
+- **Address Alignment**: Aligned vs misaligned addresses
+- **Boundary Conditions**: Address range boundaries
+- **Response Scenarios**: OKAY vs error response conditions
 
-- **ARM AMBA Specification**: AXI4 protocol implementation based on ARM AMBA 4 AXI4 specification
-- **SystemVerilog Community**: Verification methodologies and best practices
-- **Open Source Tools**: Integration with open-source simulation and analysis tools
+## 🔍 Debug and Analysis
 
-## Contact
+### Debug Features
 
-For questions, issues, or contributions:
+Enable comprehensive debug output:
 
-- **Repository**: [AXI4-Compliant-Memory-Mapped-Slave-Verification](https://github.com/Hussein-18021/AXI4-Compliant-Memory-Mapped-Slave-Verification)
-- **Issues**: Use GitHub Issues for bug reports and feature requests
-- **Discussions**: GitHub Discussions for questions and community interaction
+```systemverilog
+parameter bit DebugEn = 1;  // Enable debug messages
+```
+
+Debug output includes:
+- Transaction details and timing
+- Handshaking sequence logging  
+- Beat-by-beat data tracking
+- Response analysis and validation
+
+### Assertion Monitoring
+
+Real-time assertion monitoring with detailed error reporting:
+
+```systemverilog
+// Example assertion with detailed error message
+assert property (awvalid_stable_until_awready)
+    else $error("ASSERTION FAILED: AWVALID deasserted before AWREADY handshake");
+```
+
+### Coverage Analysis
+
+Detailed coverage reporting with hole identification:
+
+- Coverage group percentages
+- Uncovered bin identification  
+- Cross-coverage analysis
+- Coverage convergence tracking
+
+## 🤝 Contributing
+
+This verification environment is designed for extensibility:
+
+### Adding New Test Scenarios
+1. Extend `test_mode_e` enumeration in `pkg.sv`
+2. Add corresponding constraints in `enhanced_Transaction.sv`
+3. Implement test sequence in `Testbench.sv`
+
+### Adding New Assertions
+1. Add assertions to appropriate category in `assertions.sv`
+2. Include meaningful error messages
+3. Update assertion counter tracking
+
+### Extending Coverage
+1. Add new coverage groups to `enhanced_Transaction.sv`
+2. Implement sampling triggers in testbench
+3. Update coverage reporting methods
+
+## 📜 License
+
+This project is open source and available under standard open source licenses.
 
 ---
 
-## Revision History
+**Repository**: [AXI4-Compliant-Memory-Mapped-Slave-Verification](https://github.com/Hussein-18021/AXI4-Compliant-Memory-Mapped-Slave-Verification)
 
-| Version | Date | Author | Description |
-|---------|------|--------|-------------|
-| v1.0 | 2024 | Hussein-18021 | Initial verification environment |
-| v1.1 | 2024 | Hussein-18021 | Enhanced transaction model and assertions |
-| v1.2 | 2024 | Hussein-18021 | Added comprehensive coverage model |
+**Author**: Hussein Hassan
 
----
-
-*This README provides comprehensive documentation for the AXI4-Compliant Memory-Mapped Slave Verification project. For technical support or detailed implementation questions, please refer to the individual file documentation or create an issue in the repository.*
+**Last Updated**: August 2025
