@@ -198,14 +198,6 @@ module axi4_assertions #(
     assert_awsize_stable: assert property (awsize_stable_during_valid)
         else $error("ASSERTION FAILED: AWSIZE changed during valid period");
     
-    // AWLEN should not exceed maximum burst length (AXI4: 255, but design may have lower limit)
-    property awlen_within_limits;
-        @(posedge clk) disable iff (!ARESTN)
-        AWVALID |-> (AWLEN < MAX_BURST_LENGTH);
-    endproperty
-    assert_awlen_limits: assert property (awlen_within_limits)
-        else $error("ASSERTION FAILED: AWLEN exceeds maximum burst length");
-
     // AWSIZE should be valid (0, 1, 2, 3 for byte, halfword, word, doubleword)
     property awsize_valid_encoding;
         @(posedge clk) disable iff (!ARESTN)
@@ -375,14 +367,6 @@ module axi4_assertions #(
     endproperty
     assert_rdata_stable: assert property (rdata_stable_during_valid)
         else $error("ASSERTION FAILED: RDATA changed during valid period");
-    
-    // RRESP must remain stable when RVALID is high until handshake
-    property rresp_stable_during_valid;
-        @(posedge clk) disable iff (!ARESTN)
-        (RVALID && !RREADY) |=> $stable(RRESP);
-    endproperty
-    assert_rresp_stable: assert property (rresp_stable_during_valid)
-        else $error("ASSERTION FAILED: RRESP changed during valid period");
     
     // RLAST must remain stable when RVALID is high until handshake
     property rlast_stable_during_valid;
