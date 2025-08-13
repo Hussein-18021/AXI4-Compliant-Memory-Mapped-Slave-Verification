@@ -14,7 +14,7 @@
 
 ## 🎯 Overview
 
-This repository contains a **comprehensive SystemVerilog verification framework** for AXI4-compliant memory-mapped slave designs. The framework implements industry-standard verification methodologies including constrained random testing, coverage-driven verification, assertion-based verification, and directed testing to ensure complete AXI4 protocol compliance.
+This repository contains a **comprehensive SystemVerilog verification framework** for AXI4-compliant memory-mapped slave designs. The framework implements industry-standard verification methodologies, including constrained random testing, coverage-driven verification, assertion-based verification, and directed testing to ensure complete AXI4 protocol compliance.
 
 ### Key Achievements
 - ✅ **100% Functional Coverage** targeting all AXI4 protocol scenarios
@@ -238,7 +238,7 @@ endtask
 ## 🏃 Running the Tests
 
 ### Prerequisites
-- **ModelSim/QuestaSim** (version 10.6 or later)
+- **ModelSim/QuestaSim**
 - **SystemVerilog** support
 - **Coverage analysis** capabilities
 
@@ -251,19 +251,6 @@ cd AXI4-Compliant-Memory-Mapped-Slave-Verification
 # Run the automated test suite
 vsim -do run.do
 ```
-
-### Manual Execution
-```bash
-# Compile all files
-vlib work
-vlog intf.sv pkg.sv enhanced_Transaction.sv Testbench.sv axi_memory.v axi4.v top.sv +cover -covercells
-
-# Run simulation with coverage
-vsim -voptargs=+acc work.top -coverage +ntb_random_seed=12345
-add wave -radix hex /top/dut/*
-run -all
-```
-
 ### Test Configuration
 The testbench supports several parameters for customization:
 
