@@ -15,7 +15,7 @@ module top;
 
     assign axi.ACLK = clk;
 
-    axi4 #( .DATA_WIDTH(DATA_WIDTH),.ADDR_WIDTH(ADDR_WIDTH), .MEMORY_DEPTH(MEMORY_DEPTH)) dut (
+    axi4 #(.DATA_WIDTH(DATA_WIDTH),.ADDR_WIDTH(ADDR_WIDTH), .MEMORY_DEPTH(MEMORY_DEPTH)) dut (
         .ACLK     (axi.ACLK),
         .ARESETn  (axi.ARESTN), 
         .AWADDR   (axi.AWADDR),
@@ -43,5 +43,32 @@ module top;
     );
 
     Testbench tb(axi.TB);
+
+    bind axi4 axi4_assertions u_axi4_assertions (
+        .clk      (axi.ACLK),
+        .ARESTN  (axi.ARESTN), 
+        .AWADDR   (axi.AWADDR),
+        .AWLEN    (axi.AWLEN),
+        .AWSIZE   (axi.AWSIZE),
+        .AWVALID  (axi.AWVALID),
+        .AWREADY  (axi.AWREADY),
+        .WDATA    (axi.WDATA),
+        .WLAST    (axi.WLAST),
+        .WVALID   (axi.WVALID),
+        .WREADY   (axi.WREADY),
+        .BRESP    (axi.BRESP),
+        .BVALID   (axi.BVALID),
+        .BREADY   (axi.BREADY),
+        .ARADDR   (axi.ARADDR),
+        .ARLEN    (axi.ARLEN),
+        .ARSIZE   (axi.ARSIZE),
+        .ARVALID  (axi.ARVALID),
+        .ARREADY  (axi.ARREADY),
+        .RDATA    (axi.RDATA),
+        .RRESP    (axi.RRESP),
+        .RLAST    (axi.RLAST),
+        .RVALID   (axi.RVALID),
+        .RREADY   (axi.RREADY)
+    );
 
 endmodule

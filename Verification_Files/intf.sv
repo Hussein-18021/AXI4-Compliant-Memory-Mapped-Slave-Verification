@@ -34,16 +34,6 @@ interface axi_if #(
     logic       RREADY;
 
 
-    clocking cb @(posedge clk);
-        default input #1step output negedge;
-        // Write channel
-        output AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY;
-        input  AWREADY, WREADY, BRESP, BVALID;
-
-        // Read channel
-        output ARADDR, ARLEN, ARSIZE, ARVALID, RREADY;
-        input  ARREADY, RDATA, RRESP, RLAST, RVALID;
-    endclocking
 
 
     modport DUT (
@@ -53,7 +43,7 @@ interface axi_if #(
     );
 
     modport TB (
-        input  clk, ACLK, AWREADY, WREADY, BRESP, BVALID, ARREADY, RDATA, RRESP, RLAST, RVALID,
+        input   ACLK, AWREADY, WREADY, BRESP, BVALID, ARREADY, RDATA, RRESP, RLAST, RVALID,
         output ARESTN, AWADDR, AWLEN, AWSIZE, AWVALID, WDATA, WLAST, WVALID, BREADY,
                ARADDR, ARLEN, ARSIZE, ARVALID, RREADY
     );
