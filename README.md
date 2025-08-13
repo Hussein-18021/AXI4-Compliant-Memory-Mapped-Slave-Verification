@@ -411,13 +411,6 @@ We welcome contributions to improve the verification framework! Here's how you c
 4. Push to branch (`git push origin feature/new-verification-feature`)  
 5. Create a Pull Request
 
-## 📚 Additional Resources
-
-### AXI4 Specification References
-- ARM AMBA AXI4 Specification (IHI0022E)
-- AXI4 Protocol Checker Implementation Guide
-- SystemVerilog Assertions Methodology
-
 ### Related Documentation
 - `docs/` directory contains detailed technical specifications
 - Coverage analysis methodology documents
@@ -434,3 +427,5 @@ For questions, issues, or contributions:
 **Built with ❤️ for the verification community**
 
 *This comprehensive verification framework represents months of development effort to create a robust, reusable, and industry-standard AXI4 verification environment. We hope it serves as a valuable resource for verification engineers working on AXI4-compliant designs.*
+
+Authors: Hussein Hassan & Mostafa Hassan
