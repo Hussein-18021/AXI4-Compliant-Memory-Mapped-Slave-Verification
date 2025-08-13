@@ -118,7 +118,6 @@ Implements sophisticated transaction modeling with:
 Transaction Class Features:
 - **Smart Randomization**: Weighted distributions for realistic traffic patterns
 - **Address Alignment**: Automatic address alignment based on transfer size
-- **Burst Handling**: Support for INCR, WRAP, and FIXED burst types
 - **Response Modeling**: Comprehensive error response generation
 
 ### Testbench Layer (`Testbench.sv`)
