@@ -279,22 +279,20 @@ Text report: cov_report.txt
 HTML report: cov_report/index.html
 ```
 
-### Sample Test Results
+### Final Test Results
 ```
 ======================================================
-                FINAL TEST REPORT                    
+FINAL TEST REPORT
 ======================================================
-Total Tests:    485
-Read Tests:     242  
-Write Tests:    243
-Passed Tests:   462
-Failed Tests:   23 (intended boundary crossing failures)
-Pass Rate:      95.3%
+Total Tests:    11970
+Read Tests:     4217
+Write Tests:    7753
+Passed Tests:   11372
+Failed Tests (inteded failure):   739
+Pass Rate:      95.0%
 ------------------------------------------------------
-OKAY Responses: 438
-SLVERR Count:   47
-======================================================
-
+OKAY Responses: 12630
+SLVERR Count:   1637
 === COMPREHENSIVE COVERAGE REPORT ===
 Burst Coverage:           100.0%
 Memory Address Coverage:  100.0%
