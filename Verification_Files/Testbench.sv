@@ -626,9 +626,9 @@ module Testbench(axi_if.TB axi);
             end else begin
                 failed_tests++;
                 if (expected.op_type == WRITE_OP) begin
-                    $display("  TEST FAIL - Write transaction verification failed");
+                    $display("  TEST FAIL - Write transaction verification failed at time : %0t", $time);
                 end else begin
-                    $display("  TEST FAIL - Read transaction verification failed");
+                    $display("  TEST FAIL - Read transaction verification failed at time : %0t", $time);
                 end
             end
             $display("======================================================");
@@ -1085,6 +1085,50 @@ module Testbench(axi_if.TB axi);
         $display("======================================================\n");
     endtask
 
+task automatic run_directed_addr_test(logic [15:0] target_addr);
+    Transaction actual_tx;
+    
+    $display("=== DIRECTED ADDRESS TEST ===");
+
+    // Enable directed test mode
+    Transaction#(DATA_WIDTH, ADDR_WIDTH)::directed_test_mode = 1;
+    
+    // Test both READ and WRITE operations at this specific address
+    for (int op = 0; op < 2; op++) begin
+        tx = new();
+        if (!tx.randomize() with {
+            op_type == (op == 0) ? WRITE_OP : READ_OP;
+            ADDR == target_addr;  // Force exact address 0x208
+            LEN == 0;             // Single beat for simplicity
+            SIZE == 3'b010;       // 4-byte transfer
+            test_mode == RANDOM_MODE;
+        }) begin
+            $error("Failed to randomize transaction for addr 130 test");
+            continue;
+        end
+        
+        $display("Testing %s at ADDR=0x%h (word_addr=%0d)", 
+                 tx.op_type.name(), tx.ADDR, tx.ADDR >> 2);
+        
+        golden_model(tx);
+        drive_stimulus(tx, actual_tx);
+        collect_output(actual_tx);
+        check_results();
+        
+        total_tests++;
+        if (tx.op_type == READ_OP) read_tests++; else write_tests++;
+        
+        // Sample coverage to update bins
+        sample_dut_coverage(actual_tx);
+    end
+    
+    // Disable directed test mode
+    Transaction#(DATA_WIDTH, ADDR_WIDTH)::directed_test_mode = 0;
+    
+    $display("Completed directed test for bin low_addr[130]");
+    $display("Current overall coverage: %0.1f%%", overall_coverage);
+endtask
+
     // === MAIN TEST SEQUENCE ===
     initial begin
         $display("Starting Enhanced Integrated AXI4 Testbench...");
@@ -1113,6 +1157,8 @@ module Testbench(axi_if.TB axi);
         
         // Write-Read sequences
         repeat(2) run_directed_write_read_sequence();  // Reduced from 5 to 2
+        run_directed_addr_test(16'h208);
+        run_directed_addr_test(16'h2000);
         
         $display("After directed testing: Coverage = %0.1f%%", overall_coverage);
         
@@ -1124,7 +1170,7 @@ module Testbench(axi_if.TB axi);
         // Phase 3: Coverage-driven testing to reach 100%
         $display("\n=== PHASE 3: COVERAGE-DRIVEN TESTING ===");
         run_coverage_driven_tests();
-        
+
         // Display final report
         display_final_report();
         

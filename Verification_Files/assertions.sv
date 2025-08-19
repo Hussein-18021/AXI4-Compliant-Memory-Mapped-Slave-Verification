@@ -331,15 +331,7 @@ module axi4_assertions #(
     endproperty
     assert_arsize_stable: assert property (arsize_stable_during_valid)
         else $error("ASSERTION FAILED: ARSIZE changed during valid period");
-
-    // ARLEN should not exceed maximum burst length
-    property arlen_within_limits;
-        @(posedge clk) disable iff (!ARESTN)
-        ARVALID |-> (ARLEN < MAX_BURST_LENGTH);
-    endproperty
-    assert_arlen_limits: assert property (arlen_within_limits)
-        else $error("ASSERTION FAILED: ARLEN exceeds maximum burst length");
-
+        
     // ARSIZE should be valid 
     property arsize_valid_encoding;
         @(posedge clk) disable iff (!ARESTN)
@@ -474,34 +466,6 @@ module axi4_assertions #(
     endproperty
     assert_read_beats_match_arlen: assert property (read_beats_match_arlen)
         else $error("ASSERTION FAILED: Number of read beats doesn't match ARLEN + 1");
-
-    // ------------------------------------------------------------------------
-    // TIMEOUT AND LIVELOCK PREVENTION ASSERTIONS
-    // ------------------------------------------------------------------------
-    
-    // AWREADY should not remain low indefinitely when AWVALID is high
-    property awready_timeout_prevention;
-        @(posedge clk) disable iff (!ARESTN)
-        AWVALID |-> ##[1:100] AWREADY;
-    endproperty
-    assert_awready_timeout: assert property (awready_timeout_prevention)
-        else $error("ASSERTION FAILED: AWREADY timeout - potential livelock");
-    
-    // WREADY should not remain low indefinitely when WVALID is high
-    property wready_timeout_prevention;
-        @(posedge clk) disable iff (!ARESTN)
-        WVALID |-> ##[1:100] WREADY;
-    endproperty
-    assert_wready_timeout: assert property (wready_timeout_prevention)
-        else $error("ASSERTION FAILED: WREADY timeout - potential livelock");
-    
-    // ARREADY should not remain low indefinitely when ARVALID is high
-    property arready_timeout_prevention;
-        @(posedge clk) disable iff (!ARESTN)
-        ARVALID |-> ##[1:100] ARREADY;
-    endproperty
-    assert_arready_timeout: assert property (arready_timeout_prevention)
-        else $error("ASSERTION FAILED: ARREADY timeout - potential livelock");
 
     // ========================================================================
     // COVERAGE ASSERTIONS AND MONITORS

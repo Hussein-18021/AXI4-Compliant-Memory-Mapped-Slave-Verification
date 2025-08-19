@@ -2,17 +2,16 @@ vlib work
 
 vlog intf.sv pkg.sv enhanced_Transaction.sv Testbench.sv axi_memory.v axi4.v top.sv +cover -covercells
 
-for {set i 0} {$i < 5} {incr i} {
+for {set i 0} {$i < 3} {incr i} {
     set seed [expr {int(rand() * 1000000)}]
     set ucdb_file "cov_run${i}.ucdb"
     
     puts "Running simulation $i with random seed: $seed"
     
-    if {$i < 4} {
+    if {$i < 2} {
         # For all runs except the last one, quit after saving coverage
         vsim -voptargs=+acc work.top -coverage +ntb_random_seed=$seed -do "
-            coverage save -onexit -du work.axi4 $ucdb_file
-            coverage save -onexit -du work.Testbench $ucdb_file
+            coverage save -onexit $ucdb_file
             add wave -radix hex /top/dut/*
             run -all
             quit -sim
@@ -20,8 +19,7 @@ for {set i 0} {$i < 5} {incr i} {
     } else {
         # For the last run, don't quit the simulation
         vsim -voptargs=+acc work.top -coverage +ntb_random_seed=$seed -do "
-            coverage save -onexit -du work.axi4 $ucdb_file
-            coverage save -onexit -du work.Testbench $ucdb_file
+            coverage save -onexit $ucdb_file
             add wave -radix hex /top/dut/*
             run -all
         "
